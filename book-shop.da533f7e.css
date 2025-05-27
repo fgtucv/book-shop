@@ -249,6 +249,7 @@ button {
   padding-left: 12px;
   padding-right: 12px;
   display: flex;
+  position: relative;
 }
 
 .header__account-avatar-div {
@@ -349,8 +350,9 @@ button {
 }
 
 .header__exit-button {
-  color: #111;
+  color: #000;
   letter-spacing: -.56px;
+  white-space: nowrap;
   background-color: #fff;
   border: 1.5px solid #111;
   border-radius: 18px;
@@ -361,8 +363,10 @@ button {
   line-height: 18px;
   display: flex;
   position: absolute;
-  top: 58px;
-  right: 4%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translate(0%, 100%);
 }
 
 .header__exit-icon {

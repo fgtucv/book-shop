@@ -1,40 +1,40 @@
-const e=async()=>{try{return await fetch("https://books-backend.p.goit.global/books/category-list").then(e=>e.json())}catch(e){return e}},t=document.querySelector(".category__list"),a=document.querySelector(".magazine");function o(e,t=!1){let s="";!1===t?s=e.map(e=>`
-        <li class="magazine__item" id="${e._id}">
-            <img class="magazine__img" src="${e.book_image}" alt="${e.description}">
-            <h3 class="magazine__book-name">${e.title}</h3>
-            <h4 class="magazine__book-author">${e.author}</h4>
-        </li>`).join(""):!0===t&&(s=e.map(e=>`
+const t=async()=>{try{return await fetch("https://books-backend.p.goit.global/books/category-list").then(t=>t.json())}catch(t){return t}},e=document.querySelector(".category__list"),o=document.querySelector(".magazine");function a(t,e=!1){let s="";!1===e?s=t.map(t=>`
+        <li class="magazine__item" id="${t._id}">
+            <img class="magazine__img" src="${t.book_image}" alt="${t.description}">
+            <h3 class="magazine__book-name">${t.title}</h3>
+            <h4 class="magazine__book-author">${t.author}</h4>
+        </li>`).join(""):!0===e&&(s=t.map(t=>`
         <li class="magazine__item">
-            <h2 class="magazine__type-title">${e.list_name}</h2>
+            <h2 class="magazine__type-title">${t.list_name}</h2>
             <ul class="magazine__book-list">
-                <li class="magazine__item" id="${e.books[0]._id}">
-                    <img class="magazine__img" src="${e.books[0].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${e.books[0].title}</h3>
-                    <h4 class="magazine__book-author">${e.books[0].author}</h4>
+                <li class="magazine__item" id="${t.books[0]._id}">
+                    <img class="magazine__img" src="${t.books[0].book_image}" alt="1">
+                    <h3 class="magazine__book-name">${t.books[0].title}</h3>
+                    <h4 class="magazine__book-author">${t.books[0].author}</h4>
                 </li>
-                <li class="magazine__item" id="${e.books[1]._id}">
-                    <img class="magazine__img" src="${e.books[1].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${e.books[1].title}</h3>
-                    <h4 class="magazine__book-author">${e.books[1].author}</h4>
+                <li class="magazine__item" id="${t.books[1]._id}">
+                    <img class="magazine__img" src="${t.books[1].book_image}" alt="1">
+                    <h3 class="magazine__book-name">${t.books[1].title}</h3>
+                    <h4 class="magazine__book-author">${t.books[1].author}</h4>
                 </li>
-                <li class="magazine__item" id="${e.books[2]._id}">
-                    <img class="magazine__img" src="${e.books[2].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${e.books[2].title}</h3>
-                    <h4 class="magazine__book-author">${e.books[2].author}</h4>
+                <li class="magazine__item" id="${t.books[2]._id}">
+                    <img class="magazine__img" src="${t.books[2].book_image}" alt="1">
+                    <h3 class="magazine__book-name">${t.books[2].title}</h3>
+                    <h4 class="magazine__book-author">${t.books[2].author}</h4>
                 </li>
-                <li class="magazine__item" id="${e.books[3]._id}">
-                    <img class="magazine__img" src="${e.books[3].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${e.books[3].title}</h3>
-                    <h4 class="magazine__book-author">${e.books[3].author}</h4>
+                <li class="magazine__item" id="${t.books[3]._id}">
+                    <img class="magazine__img" src="${t.books[3].book_image}" alt="1">
+                    <h3 class="magazine__book-name">${t.books[3].title}</h3>
+                    <h4 class="magazine__book-author">${t.books[3].author}</h4>
                 </li>
-                <li class="magazine__item" id="${e.books[4]._id}">
-                    <img class="magazine__img" src="${e.books[4].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${e.books[4].title}</h3>
-                    <h4 class="magazine__book-author">${e.books[4].author}</h4>
+                <li class="magazine__item" id="${t.books[4]._id}">
+                    <img class="magazine__img" src="${t.books[4].book_image}" alt="1">
+                    <h3 class="magazine__book-name">${t.books[4].title}</h3>
+                    <h4 class="magazine__book-author">${t.books[4].author}</h4>
                 </li>
             </ul>
-            <button type="button" class="magazine__button">SEE MORE</button>
-        </li>`).join("")),a.innerHTML=s}const s=async e=>{try{return await fetch(`${e}`).then(e=>e.json())}catch(e){return e}},n=document.querySelector(".header__menu-button"),i=document.querySelector(".phone__close-button"),l=document.querySelector(".phone-bacdrop");function c(){l.classList.add("is-hidden"),n.style.display="block",i.style.display="none"}n.addEventListener("click",function(){l.classList.remove("is-hidden"),n.style.display="none",i.style.display="block"}),i.addEventListener("click",c);const r=document.querySelector(".header");function d(e){r.innerHTML=`<div class="container">
+            <button data-type="${t.list_name}" type="button" class="magazine__button">SEE MORE</button>
+        </li>`).join("")),o.innerHTML=s}const s=async t=>{try{return await fetch(`${t}`).then(t=>t.json())}catch(t){return t}},n=document.querySelector(".header__menu-button"),i=document.querySelector(".phone__close-button"),l=document.querySelector(".phone-bacdrop");function c(){l.classList.add("is-hidden"),n.style.display="block",i.style.display="none"}n.addEventListener("click",function(){l.classList.remove("is-hidden"),n.style.display="none",i.style.display="block"}),i.addEventListener("click",c);const r=document.querySelector(".header");function d(t){r.innerHTML=`<div class="container">
                 <svg class="header__logo" width="109" height="28" viewBox="0 0 109 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_102_278)">
                     <path d="M0 2L12.2571 14.1286L24 26V2H0Z" fill="#F6F6F6"/>
@@ -92,21 +92,21 @@ const e=async()=>{try{return await fetch("https://books-backend.p.goit.global/bo
                         <path d="M3.16663 17.4166C3.16663 15.7369 3.83389 14.126 5.02162 12.9383C6.20935 11.7506 7.82025 11.0833 9.49996 11.0833C11.1797 11.0833 12.7906 11.7506 13.9783 12.9383C15.166 14.126 15.8333 15.7369 15.8333 17.4166H3.16663ZM9.49996 10.2916C6.87558 10.2916 4.74996 8.166 4.74996 5.54163C4.74996 2.91725 6.87558 0.791626 9.49996 0.791626C12.1243 0.791626 14.25 2.91725 14.25 5.54163C14.25 8.166 12.1243 10.2916 9.49996 10.2916Z" fill="#4F2EE8"/>
                     </svg>
                 </div>
-                <span class="header__account-name">${e.name}</span>
+                <span class="header__account-name">${t.name}</span>
                 <button type="button" class="header__account-button">
                     <svg class="header__account-icon" xmlns="http://www.w3.org/2000/svg" width="23" height="26" viewBox="0 0 23 26" fill="none">
                         <path d="M4.79175 9.75H18.2084L12.1776 16.5674C11.9979 16.7705 11.7542 16.8846 11.5001 16.8846C11.246 16.8846 11.0023 16.7705 10.8225 16.5674L4.79175 9.75Z" fill="white"/>
                     </svg>
                 </button>
-            </div>
-            <button class="header__exit-button" type="button">
+                            <button class="header__exit-button" type="button">
                 Log out
                 <svg class="header__exit-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M3.33325 10H16.6666M16.6666 10L11.6666 5M16.6666 10L11.6666 15" stroke="#EAC645" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
-        </div>`}const h=document.querySelector(".phone__open-button");"login"===JSON.parse(localStorage.getItem("status"))?(console.log("2"),d(JSON.parse(localStorage.getItem("account")))):(console.log("1"),localStorage.setItem("status",JSON.stringify("no login"))),e().then(e=>{let a;a="",a=e.map(e=>`
+            </div>
+        </div>`}const h=document.querySelector(".phone__open-button");"login"===JSON.parse(localStorage.getItem("status"))?(console.log("2"),d(JSON.parse(localStorage.getItem("account")))):(console.log("1"),localStorage.setItem("status",JSON.stringify("no login"))),t().then(t=>{let o;o="",o=t.map(t=>`
         <li class="category__item">
-            <span class="category__span">${e.list_name}</span>
-        </li>`).join(""),t.insertAdjacentHTML("beforeend",a)}),s("https://books-backend.p.goit.global/books/top-books").then(e=>{o(e,!0)}),h.addEventListener("click",()=>{c()});const u=document.querySelector(".category__list"),_=document.querySelector(".shop_title");document.querySelector(".magazine__book-list"),u.addEventListener("click",function(e){let t=e.target;if(!t.classList.contains("active")){if(!1!==t.parentNode.classList.contains("category__item"))if("All categories"===t.textContent)document.querySelector(".active").classList.remove("active"),t.classList.add("active"),_.innerHTML="Best Sellers <span class='shop_title-purpure'>magazine</span>",s("https://books-backend.p.goit.global/books/top-books").then(e=>{o(e,!0)});else{document.querySelector(".active").classList.remove("active"),t.classList.add("active");let e=t.textContent.split(" ");_.innerHTML=`${e.slice(0,-1).join(" ")} <span class="shop_title-purpure">${e.at(-1)}</span>`,s(`https://books-backend.p.goit.global/books/category?category=${t.textContent}`).then(e=>{o(e),console.log(e)})}}});const g=document.querySelectorAll(".support__item"),m=document.querySelector(".support__scroll-button");m.addEventListener("click",function(){let e=0;g.forEach(t=>{e<=2?t.classList.toggle("no-showe"):e>5&&t.classList.toggle("no-showe"),e+=1}),g[0].classList.contains("no-showe")?m.style.transform="translate(-50%, 0%) rotate(0deg)":m.style.transform="translate(-50%, 0%) rotate(180deg)"});const p=async e=>{try{let t={method:"POST",body:JSON.stringify(e),headers:{"Content-Type":"application/json; charset=UTF-8"}},a=await fetch("https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts",t).then(e=>a)}catch(e){return e}},b=async(e,t)=>{try{return await fetch(`https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts?name=${e}&email=${t}`).then(e=>e.json())}catch(e){return e}},k=document.querySelector(".login-modal__close-button"),C=document.querySelector(".phone__open-button"),v=document.querySelector(".header__open-button"),y=document.querySelector(".login-modal__submit-button"),w=document.querySelector(".login-modal-bacdrop"),f=document.querySelector(".login-modal__change-type"),H=document.querySelector("#name"),L=document.querySelector("#email"),S=document.querySelector("#password");C.addEventListener("click",V),v.addEventListener("click",V),k.addEventListener("click",$),y.addEventListener("click",function(e){if(e.preventDefault(),"sing up"===M){let e={name:`${H.value}`,email:`${L.value}`,avatar:"",cards:[],password:`${S.value}`};p(e),localStorage.setItem("account",JSON.stringify(e)),localStorage.setItem("status",JSON.stringify("login")),d(JSON.parse(localStorage.getItem("account"))),$();return}"sing in"===M&&b(H.value,L.value).then(e=>{let t=e[0];S.value===t.password&&(localStorage.setItem("account",JSON.stringify(t)),localStorage.setItem("status",JSON.stringify("login")),d(JSON.parse(localStorage.getItem("account"))),$())})}),f.addEventListener("click",function(e){let t=e.target,a=document.querySelector(".active-modal");t!==a&&t!==a&&(t.classList.add("active-modal"),a.classList.remove("active-modal"),M=t.id,y.textContent=t.id)});let M="sing up";function V(){w.classList.remove("is-hidden")}function $(){w.classList.add("is-hidden")}
-//# sourceMappingURL=book-shop.4a2cf3ac.js.map
+            <span class="category__span">${t.list_name}</span>
+        </li>`).join(""),e.insertAdjacentHTML("beforeend",o)}),s("https://books-backend.p.goit.global/books/top-books").then(t=>{a(t,!0)}),h.addEventListener("click",()=>{c()});const u=document.querySelector(".category__list"),g=document.querySelector(".shop_title");document.querySelector(".magazine__book-list"),u.addEventListener("click",function(t){let e=t.target;if(!e.classList.contains("active")){if(!1!==e.parentNode.classList.contains("category__item"))if("All categories"===e.textContent)document.querySelector(".active").classList.remove("active"),e.classList.add("active"),g.innerHTML="Best Sellers <span class='shop_title-purpure'>magazine</span>",s("https://books-backend.p.goit.global/books/top-books").then(t=>{a(t,!0)});else{document.querySelector(".active").classList.remove("active"),e.classList.add("active");let t=e.textContent.split(" ");g.innerHTML=`${t.slice(0,-1).join(" ")} <span class="shop_title-purpure">${t.at(-1)}</span>`,s(`https://books-backend.p.goit.global/books/category?category=${e.textContent}`).then(t=>{a(t),console.log(t)})}}});const _=document.querySelectorAll(".support__item"),m=document.querySelector(".support__scroll-button");m.addEventListener("click",function(){let t=0;_.forEach(e=>{t<=2?e.classList.toggle("no-showe"):t>5&&e.classList.toggle("no-showe"),t+=1}),_[0].classList.contains("no-showe")?m.style.transform="translate(-50%, 0%) rotate(0deg)":m.style.transform="translate(-50%, 0%) rotate(180deg)"});const p=async t=>{try{let e={method:"POST",body:JSON.stringify(t),headers:{"Content-Type":"application/json; charset=UTF-8"}},o=await fetch("https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts",e).then(t=>o)}catch(t){return t}},b=async(t,e)=>{try{return await fetch(`https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts?name=${t}&email=${e}`).then(t=>t.json())}catch(t){return t}},k=document.querySelector(".login-modal__close-button"),C=document.querySelector(".phone__open-button"),v=document.querySelector(".header__open-button"),y=document.querySelector(".login-modal__submit-button"),f=document.querySelector(".login-modal-bacdrop"),w=document.querySelector(".login-modal__change-type"),L=document.querySelector("#name"),H=document.querySelector("#email"),S=document.querySelector("#password");C.addEventListener("click",$),v.addEventListener("click",$),k.addEventListener("click",V),y.addEventListener("click",function(t){if(t.preventDefault(),"sing up"===M){let t={name:`${L.value}`,email:`${H.value}`,avatar:"",cards:[],password:`${S.value}`};p(t),localStorage.setItem("account",JSON.stringify(t)),localStorage.setItem("status",JSON.stringify("login")),d(JSON.parse(localStorage.getItem("account"))),V();return}"sing in"===M&&b(L.value,H.value).then(t=>{let e=t[0];S.value===e.password&&(localStorage.setItem("account",JSON.stringify(e)),localStorage.setItem("status",JSON.stringify("login")),d(JSON.parse(localStorage.getItem("account"))),V())})}),w.addEventListener("click",function(t){let e=t.target,o=document.querySelector(".active-modal");e!==o&&e!==o&&(e.classList.add("active-modal"),o.classList.remove("active-modal"),M=e.id,y.textContent=e.id)});let M="sing up";function $(){f.classList.remove("is-hidden")}function V(){f.classList.add("is-hidden")}const z=document.querySelector(".header__exit-button");console.log(z),z.addEventListener("click",function(){console.log("dsvd")}),document.querySelector(".magazine").addEventListener("click",function(t){let e=t.target;e.classList.contains("header__exit-button")&&getBookApi(`https://books-backend.p.goit.global/books/category?category=${e.getAttribute("data-type")}`).then(t=>{a(t),console.log(t)})});
+//# sourceMappingURL=book-shop.cc0ac510.js.map
