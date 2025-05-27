@@ -679,8 +679,10 @@ var _phoneModalJs = require("./index-JS/modal/phoneModal.js");
 var _buildHeaderJs = require("./index-JS/createHtml/buildHeader.js");
 var _getAccountApiJs = require("./index-JS/service/getAccountApi.js");
 var _postAccountJs = require("./index-JS/service/postAccount.js");
+var _logOutJs = require("./index-JS/operation/logOut.js");
+var _seeMoreButtonJs = require("./index-JS/operation/seeMoreButton.js");
 
-},{"./index-JS/app.js":"5Al9P","./index-JS/service/getCategoryApi.js":"iA63L","./index-JS/createHtml/createCetegoryList.js":"hbtQp","./index-JS/operation/changeCtagory.js":"5Wnwi","./index-JS/operation/showMoreSupport.js":"uarTt","./index-JS/service/getBookapi.js":"eOevv","./index-JS/createHtml/createBookList.js":"1TOVD","./index-JS/modal/loginModal.js":"3nRph","./index-JS/modal/phoneModal.js":"lY3I2","./index-JS/createHtml/buildHeader.js":"kRKgY","./index-JS/service/getAccountApi.js":"gsdH5","./index-JS/service/postAccount.js":"eM897"}],"5Al9P":[function(require,module,exports,__globalThis) {
+},{"./index-JS/app.js":"5Al9P","./index-JS/service/getCategoryApi.js":"iA63L","./index-JS/createHtml/createCetegoryList.js":"hbtQp","./index-JS/operation/changeCtagory.js":"5Wnwi","./index-JS/operation/showMoreSupport.js":"uarTt","./index-JS/service/getBookapi.js":"eOevv","./index-JS/createHtml/createBookList.js":"1TOVD","./index-JS/modal/loginModal.js":"3nRph","./index-JS/modal/phoneModal.js":"lY3I2","./index-JS/createHtml/buildHeader.js":"kRKgY","./index-JS/service/getAccountApi.js":"gsdH5","./index-JS/service/postAccount.js":"eM897","./index-JS/operation/logOut.js":"20Js2","./index-JS/operation/seeMoreButton.js":"hjmZr"}],"5Al9P":[function(require,module,exports,__globalThis) {
 var _getCategoryApiJs = require("./service/getCategoryApi.js");
 var _createCetegoryListJs = require("./createHtml/createCetegoryList.js");
 var _createBookListJs = require("./createHtml/createBookList.js");
@@ -815,7 +817,7 @@ function createBookList(arr, category = false) {
                     <h4 class="magazine__book-author">${obj.books[4].author}</h4>
                 </li>
             </ul>
-            <button type="button" class="magazine__button">SEE MORE</button>
+            <button data-type="${obj.list_name}" type="button" class="magazine__button">SEE MORE</button>
         </li>`;
     }).join("");
     booksList.innerHTML = html;
@@ -926,13 +928,13 @@ function buildHeader(object) {
                         <path d="M4.79175 9.75H18.2084L12.1776 16.5674C11.9979 16.7705 11.7542 16.8846 11.5001 16.8846C11.246 16.8846 11.0023 16.7705 10.8225 16.5674L4.79175 9.75Z" fill="white"/>
                     </svg>
                 </button>
-            </div>
-            <button class="header__exit-button" type="button">
+                            <button class="header__exit-button" type="button">
                 Log out
                 <svg class="header__exit-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M3.33325 10H16.6666M16.6666 10L11.6666 5M16.6666 10L11.6666 15" stroke="#EAC645" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
+            </div>
         </div>`;
     header.innerHTML = html;
 }
@@ -1088,6 +1090,29 @@ const getAccount = async (name, email)=>{
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["5j6Kf","a0t4e"], "a0t4e", "parcelRequireb734", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"20Js2":[function(require,module,exports,__globalThis) {
+const logOutButton = document.querySelector(".header__exit-button");
+console.log(logOutButton);
+logOutButton.addEventListener("click", logOut);
+function logOut() {
+    console.log("dsvd");
+// localStorage.removeItem;
+// location.reload();
+}
+
+},{}],"hjmZr":[function(require,module,exports,__globalThis) {
+var _createBookListJs = require("../createHtml/createBookList.js");
+const list = document.querySelector(".magazine");
+list.addEventListener("click", seeMore);
+function seeMore(event) {
+    const element = event.target;
+    if (element.classList.contains("header__exit-button")) getBookApi(`https://books-backend.p.goit.global/books/category?category=${element.getAttribute("data-type")}`).then((data)=>{
+        (0, _createBookListJs.createBookList)(data);
+        console.log(data);
+    });
+    else return;
+}
+
+},{"../createHtml/createBookList.js":"1TOVD"}]},["5j6Kf","a0t4e"], "a0t4e", "parcelRequireb734", {})
 
 //# sourceMappingURL=book-shop.31b563d9.js.map

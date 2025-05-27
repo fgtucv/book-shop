@@ -44,7 +44,7 @@ export function createBookList(arr, category = false) {
                     <h4 class="magazine__book-author">${obj.books[4].author}</h4>
                 </li>
             </ul>
-            <button type="button" class="magazine__button">SEE MORE</button>
+            <button data-type="${obj.list_name}" type="button" class="magazine__button">SEE MORE</button>
         </li>`;
         }).join("");
     }

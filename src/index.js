@@ -10,3 +10,5 @@ import "./index-JS/modal/phoneModal.js";
 import "./index-JS/createHtml/buildHeader.js";
 import "./index-JS/service/getAccountApi.js";
 import "./index-JS/service/postAccount.js";
+import "./index-JS/operation/logOut.js";
+import "./index-JS/operation/seeMoreButton.js";
