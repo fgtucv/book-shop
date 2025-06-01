@@ -8,10 +8,8 @@ import { buildHeader } from "./createHtml/buildHeader.js";
 const openButtonLoginInPhone = document.querySelector(".phone__open-button");
 
 if (JSON.parse(localStorage.getItem("status")) === "login") {
-    console.log("2")
     buildHeader(JSON.parse(localStorage.getItem("account")))
 } else {
-    console.log("1")
     localStorage.setItem("status", JSON.stringify("no login"))
 }
 

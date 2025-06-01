@@ -1,0 +1,118 @@
+.shoping-list {}
+
+.shoping-list__main-title {
+    color: #111;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 52px;
+    letter-spacing: -1.92px;
+    margin-bottom: 40px;
+}
+
+.purpure {
+    color: #4F2EE8;
+}
+
+.shoping-list__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.shoping-list__item {
+    width: 996px;
+    padding: 24px;
+    display: flex;
+    border-radius: 16px;
+    border: 2px solid rgba(79, 46, 232, 0.40);
+    background: #FFF;
+    position: relative;
+}
+
+.shoping-list__img {
+    width: 116px;
+    height: 165px;
+    border-radius: 8px;
+    margin-right: 24px;
+}
+
+.shoping-list__info-div {}
+
+.shoping-list__info-title {
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: -0.64px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.shoping-list__info-type {
+    color: #B4AFAF;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.36px;
+    margin-bottom: 14px;
+}
+
+.shoping-list__info-text {
+    color: #111;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.56px;
+    margin-bottom: 48px;
+    max-width: 808px;
+}
+
+.shoping-list__info-author {
+    color: #B4AFAF;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: -0.48px;
+}
+
+.shoping-list__delet-button {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #4F2EE8;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+.shoping-list__delet-icon {
+    width: 18px;
+    height: 18px;
+    fill: transparent;
+    stroke: white;
+}
+
+.shoping-list__amazon {}
+
+.shoping-list__amazon-icon {
+    width: 48px;
+    height: 15px;
+    position: absolute;
+    bottom: 30px;
+    right: 68px;
+}
+
+.shoping-list__aplle-book {}
+
+.addModal__apple-books-icon {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+}

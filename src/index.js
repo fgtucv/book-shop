@@ -12,3 +12,5 @@ import "./index-JS/service/getAccountApi.js";
 import "./index-JS/service/postAccount.js";
 import "./index-JS/operation/logOut.js";
 import "./index-JS/operation/seeMoreButton.js";
+import "./index-JS/modal/addToShopingListModal.js";
+import "./index-JS/service/updateAccount.js";

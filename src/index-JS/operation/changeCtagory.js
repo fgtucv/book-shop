@@ -32,7 +32,6 @@ function changeCategory(event) {
 
         getBookApi(`https://books-backend.p.goit.global/books/category?category=${element.textContent}`).then((data) => {
             createBookList(data);
-            console.log(data)
         });
     }
 

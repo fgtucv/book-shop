@@ -12,8 +12,13 @@ const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 
-openButtonInPhone.addEventListener("click", openModal);
-openButtonInDesktop.addEventListener("click", openModal);
+if (JSON.parse(localStorage.getItem("status")) === "no login") {
+    openButtonInDesktop.addEventListener("click", openModal);
+    openButtonInPhone.addEventListener("click", openModal);
+} else{
+    return;
+}
+
 closeButton.addEventListener("click", closeModal);
 submitButton.addEventListener("click", submitInfo);
 modalTypeButtons.addEventListener("click", changeModalType)

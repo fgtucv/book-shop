@@ -35,7 +35,7 @@
                     <use href="./icon/symbol-defs.svg#icon-close"></use>
                 </svg>
             </button>
-            <button class="header__open-button" type="button" id="loginingModal">
+            <button class="header__open-button" type="button">
                 Sign up
                 <svg class="header__arrow-icon">
                     <use href="./icon/symbol-defs.svg#icon-arrow-right"></use>
@@ -167,7 +167,6 @@
             </div>
         </div>
     </div>
-
     <div class="phone-bacdrop is-hidden">
         <button class="phone__open-button" type="button">
             Sign up
@@ -175,8 +174,31 @@
                 <use href="./icon/symbol-defs.svg#icon-arrow-right"></use>
             </svg>
         </button>
-        <!-- <img class="phone__modal-background" src="./imeges/background.png" alt="background"> -->
     </div>
+    <div class="addModal-backdrop is-hidden">
+        <div class="addModal">
+            <button class="addModal__close-button" type="button">
+                <svg class="addModal__close-icon">
+                    <use href="./icon/symbol-defs.svg#icon-close"></use>
+                </svg>
+            </button>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSopi8ObVN7rCP6PPGNQgLYhcGhB5cxKxFOcw&s"
+                alt="book photo" class="addModal__img">
+            <div class="addModal__info-div">
+                <h2 class="addModal__title"></h2>
+                <h3 class="addModal__name"></h3>
+                <p class="addModal__text"></p>
+                <svg class="addModal__amazon-logo">
+                    <use href="./icon/symbol-defs.svg#icon-amazon"></use>
+                </svg>
+                <svg class="addModal__apple-books-logo">
+                    <use href="./icon/symbol-defs.svg#icon-appleBooks"></use>
+                </svg>
+            </div>
+            <button class="addModal__button" type="button">Add to shopping list</button>
+        </div>
+    </div>
+
 
     <!-- scrip -->
     <script src="./index.js" type="module"></script>
