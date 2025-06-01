@@ -671,7 +671,7 @@ var _appJs = require("./index-JS/app.js");
 var _getCategoryApiJs = require("./index-JS/service/getCategoryApi.js");
 var _createCetegoryListJs = require("./index-JS/createHtml/createCetegoryList.js");
 var _changeCtagoryJs = require("./index-JS/operation/changeCtagory.js");
-var _showMoreSupportJs = require("./index-JS/operation/showMoreSupport.js");
+// import "./index-JS/operation/showMoreSupport.js";
 var _getBookapiJs = require("./index-JS/service/getBookapi.js");
 var _createBookListJs = require("./index-JS/createHtml/createBookList.js");
 var _loginModalJs = require("./index-JS/modal/loginModal.js");
@@ -684,7 +684,7 @@ var _seeMoreButtonJs = require("./index-JS/operation/seeMoreButton.js");
 var _addToShopingListModalJs = require("./index-JS/modal/addToShopingListModal.js");
 var _updateAccountJs = require("./index-JS/service/updateAccount.js");
 
-},{"./index-JS/app.js":"5Al9P","./index-JS/service/getCategoryApi.js":"iA63L","./index-JS/createHtml/createCetegoryList.js":"hbtQp","./index-JS/operation/changeCtagory.js":"5Wnwi","./index-JS/operation/showMoreSupport.js":"uarTt","./index-JS/service/getBookapi.js":"eOevv","./index-JS/createHtml/createBookList.js":"1TOVD","./index-JS/modal/loginModal.js":"3nRph","./index-JS/modal/phoneModal.js":"lY3I2","./index-JS/createHtml/buildHeader.js":"kRKgY","./index-JS/service/getAccountApi.js":"gsdH5","./index-JS/service/postAccount.js":"eM897","./index-JS/operation/logOut.js":"20Js2","./index-JS/operation/seeMoreButton.js":"hjmZr","./index-JS/modal/addToShopingListModal.js":"7KSyY","./index-JS/service/updateAccount.js":"6JkEO"}],"5Al9P":[function(require,module,exports,__globalThis) {
+},{"./index-JS/app.js":"5Al9P","./index-JS/service/getCategoryApi.js":"iA63L","./index-JS/createHtml/createCetegoryList.js":"hbtQp","./index-JS/operation/changeCtagory.js":"5Wnwi","./index-JS/service/getBookapi.js":"eOevv","./index-JS/createHtml/createBookList.js":"1TOVD","./index-JS/modal/loginModal.js":"3nRph","./index-JS/modal/phoneModal.js":"lY3I2","./index-JS/createHtml/buildHeader.js":"kRKgY","./index-JS/service/getAccountApi.js":"gsdH5","./index-JS/service/postAccount.js":"eM897","./index-JS/operation/logOut.js":"20Js2","./index-JS/operation/seeMoreButton.js":"hjmZr","./index-JS/modal/addToShopingListModal.js":"7KSyY","./index-JS/service/updateAccount.js":"6JkEO"}],"5Al9P":[function(require,module,exports,__globalThis) {
 var _getCategoryApiJs = require("./service/getCategoryApi.js");
 var _createCetegoryListJs = require("./createHtml/createCetegoryList.js");
 var _createBookListJs = require("./createHtml/createBookList.js");
@@ -969,22 +969,7 @@ function changeCategory(event) {
     }
 }
 
-},{"../service/getBookapi":"eOevv","../createHtml/createBookList":"1TOVD"}],"uarTt":[function(require,module,exports,__globalThis) {
-const fonds = document.querySelectorAll(".support__item");
-const showeButton = document.querySelector(".support__scroll-button");
-showeButton.addEventListener("click", showeMoreSupports);
-function showeMoreSupports() {
-    let count = 0;
-    fonds.forEach((element)=>{
-        if (count <= 2) element.classList.toggle("no-showe");
-        else if (count > 5) element.classList.toggle("no-showe");
-        count += 1;
-    });
-    if (fonds[0].classList.contains("no-showe")) showeButton.style.transform = "translate(-50%, 0%) rotate(0deg)";
-    else showeButton.style.transform = "translate(-50%, 0%) rotate(180deg)";
-}
-
-},{}],"3nRph":[function(require,module,exports,__globalThis) {
+},{"../service/getBookapi":"eOevv","../createHtml/createBookList":"1TOVD"}],"3nRph":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "closeModal", ()=>closeModal);
