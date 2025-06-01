@@ -1,40 +1,4 @@
-const t=async()=>{try{return await fetch("https://books-backend.p.goit.global/books/category-list").then(t=>t.json())}catch(t){return t}},e=document.querySelector(".category__list"),o=document.querySelector(".magazine");function a(t,e=!1){let s="";!1===e?s=t.map(t=>`
-        <li class="magazine__item" id="${t._id}">
-            <img class="magazine__img" src="${t.book_image}" alt="${t.description}">
-            <h3 class="magazine__book-name">${t.title}</h3>
-            <h4 class="magazine__book-author">${t.author}</h4>
-        </li>`).join(""):!0===e&&(s=t.map(t=>`
-        <li class="magazine__item">
-            <h2 class="magazine__type-title">${t.list_name}</h2>
-            <ul class="magazine__book-list">
-                <li class="magazine__item" id="${t.books[0]._id}">
-                    <img class="magazine__img" src="${t.books[0].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${t.books[0].title}</h3>
-                    <h4 class="magazine__book-author">${t.books[0].author}</h4>
-                </li>
-                <li class="magazine__item" id="${t.books[1]._id}">
-                    <img class="magazine__img" src="${t.books[1].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${t.books[1].title}</h3>
-                    <h4 class="magazine__book-author">${t.books[1].author}</h4>
-                </li>
-                <li class="magazine__item" id="${t.books[2]._id}">
-                    <img class="magazine__img" src="${t.books[2].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${t.books[2].title}</h3>
-                    <h4 class="magazine__book-author">${t.books[2].author}</h4>
-                </li>
-                <li class="magazine__item" id="${t.books[3]._id}">
-                    <img class="magazine__img" src="${t.books[3].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${t.books[3].title}</h3>
-                    <h4 class="magazine__book-author">${t.books[3].author}</h4>
-                </li>
-                <li class="magazine__item" id="${t.books[4]._id}">
-                    <img class="magazine__img" src="${t.books[4].book_image}" alt="1">
-                    <h3 class="magazine__book-name">${t.books[4].title}</h3>
-                    <h4 class="magazine__book-author">${t.books[4].author}</h4>
-                </li>
-            </ul>
-            <button data-type="${t.list_name}" type="button" class="magazine__button">SEE MORE</button>
-        </li>`).join("")),o.innerHTML=s}const s=async t=>{try{return await fetch(`${t}`).then(t=>t.json())}catch(t){return t}},n=document.querySelector(".header__menu-button"),i=document.querySelector(".phone__close-button"),l=document.querySelector(".phone-bacdrop");function c(){l.classList.add("is-hidden"),n.style.display="block",i.style.display="none"}n.addEventListener("click",function(){l.classList.remove("is-hidden"),n.style.display="none",i.style.display="block"}),i.addEventListener("click",c);const r=document.querySelector(".header");function d(t){r.innerHTML=`<div class="container">
+var t;const l=document.querySelector(".header"),s=document.querySelector(".shoping-list__list"),e=async t=>{try{return await fetch(`https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts?id=${t}`).then(t=>t.json())}catch(t){return t}};t=JSON.parse(localStorage.getItem("account")),l.innerHTML=`<div class="container">
                 <svg class="header__logo" width="109" height="28" viewBox="0 0 109 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_102_278)">
                     <path d="M0 2L12.2571 14.1286L24 26V2H0Z" fill="#F6F6F6"/>
@@ -59,11 +23,11 @@ const t=async()=>{try{return await fetch("https://books-backend.p.goit.global/bo
                     </defs>
                 </svg>
             <ul class="header__nav-list">
-                <li class="header__nav-item active-nav-item">
-                    <a href="./index.html" class="header__nav-link active-nav-link">Home</a>
-                </li>
                 <li class="header__nav-item">
-                    <a class="header__nav-link" href="./basket.html">Shopping list</a>
+                    <a href="./index.html" class="header__nav-link">Home</a>
+                </li>
+                <li class="header__nav-item active-nav-item">
+                    <a class="header__nav-link  active-nav-link" href="./basket.html">Shopping list</a>
                     <svg class="header__nav-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M15.8333 5.83335H13.3333V5.00002C13.3333 4.11596 12.9821 3.26812 12.357 2.643C11.7319 2.01788 10.884 1.66669 9.99999 1.66669C9.11594 1.66669 8.26809 2.01788 7.64297 2.643C7.01785 3.26812 6.66666 4.11596 6.66666 5.00002V5.83335H4.16666C3.94565 5.83335 3.73369 5.92115 3.57741 6.07743C3.42113 6.23371 3.33333 6.44567 3.33333 6.66669V15.8334C3.33333 16.4964 3.59672 17.1323 4.06556 17.6011C4.5344 18.07 5.17029 18.3334 5.83333 18.3334H14.1667C14.8297 18.3334 15.4656 18.07 15.9344 17.6011C16.4033 17.1323 16.6667 16.4964 16.6667 15.8334V6.66669C16.6667 6.44567 16.5789 6.23371 16.4226 6.07743C16.2663 5.92115 16.0543 5.83335 15.8333 5.83335ZM8.33333 5.00002C8.33333 4.55799 8.50892 4.13407 8.82148 3.82151C9.13404 3.50895 9.55796 3.33335 9.99999 3.33335C10.442 3.33335 10.8659 3.50895 11.1785 3.82151C11.4911 4.13407 11.6667 4.55799 11.6667 5.00002V5.83335H8.33333V5.00002ZM15 15.8334C15 16.0544 14.9122 16.2663 14.7559 16.4226C14.5996 16.5789 14.3877 16.6667 14.1667 16.6667H5.83333C5.61231 16.6667 5.40035 16.5789 5.24407 16.4226C5.08779 16.2663 4.99999 16.0544 4.99999 15.8334V7.50002H6.66666V8.33335C6.66666 8.55437 6.75446 8.76633 6.91074 8.92261C7.06702 9.07889 7.27898 9.16669 7.49999 9.16669C7.72101 9.16669 7.93297 9.07889 8.08925 8.92261C8.24553 8.76633 8.33333 8.55437 8.33333 8.33335V7.50002H11.6667V8.33335C11.6667 8.55437 11.7545 8.76633 11.9107 8.92261C12.067 9.07889 12.279 9.16669 12.5 9.16669C12.721 9.16669 12.933 9.07889 13.0892 8.92261C13.2455 8.76633 13.3333 8.55437 13.3333 8.33335V7.50002H15V15.8334Z" fill="#111111"/>
                     </svg>
@@ -98,15 +62,41 @@ const t=async()=>{try{return await fetch("https://books-backend.p.goit.global/bo
                         <path d="M4.79175 9.75H18.2084L12.1776 16.5674C11.9979 16.7705 11.7542 16.8846 11.5001 16.8846C11.246 16.8846 11.0023 16.7705 10.8225 16.5674L4.79175 9.75Z" fill="white"/>
                     </svg>
                 </button>
-                            <button class="header__exit-button" type="button">
+                <button class="header__exit-button is-hidden" type="button">
                 Log out
                 <svg class="header__exit-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M3.33325 10H16.6666M16.6666 10L11.6666 5M16.6666 10L11.6666 15" stroke="#EAC645" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
             </div>
-        </div>`}const h=document.querySelector(".phone__open-button");"login"===JSON.parse(localStorage.getItem("status"))?(console.log("2"),d(JSON.parse(localStorage.getItem("account")))):(console.log("1"),localStorage.setItem("status",JSON.stringify("no login"))),t().then(t=>{let o;o="",o=t.map(t=>`
-        <li class="category__item">
-            <span class="category__span">${t.list_name}</span>
-        </li>`).join(""),e.insertAdjacentHTML("beforeend",o)}),s("https://books-backend.p.goit.global/books/top-books").then(t=>{a(t,!0)}),h.addEventListener("click",()=>{c()});const u=document.querySelector(".category__list"),g=document.querySelector(".shop_title");document.querySelector(".magazine__book-list"),u.addEventListener("click",function(t){let e=t.target;if(!e.classList.contains("active")){if(!1!==e.parentNode.classList.contains("category__item"))if("All categories"===e.textContent)document.querySelector(".active").classList.remove("active"),e.classList.add("active"),g.innerHTML="Best Sellers <span class='shop_title-purpure'>magazine</span>",s("https://books-backend.p.goit.global/books/top-books").then(t=>{a(t,!0)});else{document.querySelector(".active").classList.remove("active"),e.classList.add("active");let t=e.textContent.split(" ");g.innerHTML=`${t.slice(0,-1).join(" ")} <span class="shop_title-purpure">${t.at(-1)}</span>`,s(`https://books-backend.p.goit.global/books/category?category=${e.textContent}`).then(t=>{a(t),console.log(t)})}}});const _=document.querySelectorAll(".support__item"),m=document.querySelector(".support__scroll-button");m.addEventListener("click",function(){let t=0;_.forEach(e=>{t<=2?e.classList.toggle("no-showe"):t>5&&e.classList.toggle("no-showe"),t+=1}),_[0].classList.contains("no-showe")?m.style.transform="translate(-50%, 0%) rotate(0deg)":m.style.transform="translate(-50%, 0%) rotate(180deg)"});const p=async t=>{try{let e={method:"POST",body:JSON.stringify(t),headers:{"Content-Type":"application/json; charset=UTF-8"}},o=await fetch("https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts",e).then(t=>o)}catch(t){return t}},b=async(t,e)=>{try{return await fetch(`https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts?name=${t}&email=${e}`).then(t=>t.json())}catch(t){return t}},k=document.querySelector(".login-modal__close-button"),C=document.querySelector(".phone__open-button"),v=document.querySelector(".header__open-button"),y=document.querySelector(".login-modal__submit-button"),f=document.querySelector(".login-modal-bacdrop"),w=document.querySelector(".login-modal__change-type"),L=document.querySelector("#name"),H=document.querySelector("#email"),S=document.querySelector("#password");C.addEventListener("click",$),v.addEventListener("click",$),k.addEventListener("click",V),y.addEventListener("click",function(t){if(t.preventDefault(),"sing up"===M){let t={name:`${L.value}`,email:`${H.value}`,avatar:"",cards:[],password:`${S.value}`};p(t),localStorage.setItem("account",JSON.stringify(t)),localStorage.setItem("status",JSON.stringify("login")),d(JSON.parse(localStorage.getItem("account"))),V();return}"sing in"===M&&b(L.value,H.value).then(t=>{let e=t[0];S.value===e.password&&(localStorage.setItem("account",JSON.stringify(e)),localStorage.setItem("status",JSON.stringify("login")),d(JSON.parse(localStorage.getItem("account"))),V())})}),w.addEventListener("click",function(t){let e=t.target,o=document.querySelector(".active-modal");e!==o&&e!==o&&(e.classList.add("active-modal"),o.classList.remove("active-modal"),M=e.id,y.textContent=e.id)});let M="sing up";function $(){f.classList.remove("is-hidden")}function V(){f.classList.add("is-hidden")}const z=document.querySelector(".header__exit-button");console.log(z),z.addEventListener("click",function(){console.log("dsvd")}),document.querySelector(".magazine").addEventListener("click",function(t){let e=t.target;e.classList.contains("header__exit-button")&&getBookApi(`https://books-backend.p.goit.global/books/category?category=${e.getAttribute("data-type")}`).then(t=>{a(t),console.log(t)})});
-//# sourceMappingURL=book-shop.cc0ac510.js.map
+        </div>`,e(JSON.parse(localStorage.getItem("account")).id).then(t=>{console.log(t[0].cards),s.innerHTML=t[0].cards.map(t=>`
+    <li class="shoping-list__item">
+                        <img src="${t.imgUrl}"
+                            alt="${t.text}" class="shoping-list__img">
+                        <div class="shoping-list__info-div">
+                            <h2 class="shoping-list__info-title">${t.title}</h2>
+                            <h3 class="shoping-list__info-type">${t.type}</h3>
+                            <p class="shoping-list__info-text">${t.text}</p>
+                            <h3 class="shoping-list__info-author">${t.authorName}</h3>
+                        </div>
+                        <button type="button" class="shoping-list__delet-button">
+                            <svg class="shoping-list__delet-icon">
+                                <path d="M6.75 2.25H11.25M2.25 4.5H15.75M14.25 4.5L13.724 12.3895C13.6451 13.5732 13.6057 14.165 13.35 14.6138C13.1249 15.0088 12.7854 15.3265 12.3762 15.5248C11.9115 15.75 11.3183 15.75 10.132 15.75H7.86799C6.68168 15.75 6.08852 15.75 5.62375 15.5248C5.21457 15.3265 4.87507 15.0088 4.64999 14.6138C4.39433 14.165 4.35488 13.5732 4.27596 12.3895L3.75 4.5M7.5 7.875V11.625M10.5 7.875V11.625" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <a href="${t.amazonBuyLink}"
+                            class="shoping-list__amazon">
+                            <svg class="shoping-list__amazon-icon">
+                               <path fill="#B4AFAF" style="fill: var(--color1, #B4AFAF)" d="M65.939 25.026c-6.154 4.55-15.105 6.974-22.825 6.974-10.816 0-20.513-3.991-27.897-10.629-0.559-0.522-0.075-1.231 0.634-0.821 7.944 4.625 17.753 7.385 27.897 7.385 6.825 0 14.359-1.417 21.296-4.364 1.044-0.41 1.902 0.709 0.895 1.455z"></path>
+                               <path fill="#B4AFAF" style="fill: var(--color1, #B4AFAF)" d="M68.513 22.079c-0.783-1.007-5.221-0.485-7.198-0.224-0.597 0.075-0.709-0.448-0.149-0.821 3.543-2.499 9.324-1.753 9.995-0.932s-0.186 6.638-3.506 9.399c-0.522 0.41-1.007 0.186-0.783-0.373 0.746-1.865 2.424-6.005 1.641-7.049z"></path>
+                               <path fill="#000" style="fill: var(--color2, #000)" d="M61.427 3.506l0 0.001c0.014 0.331 0.287 0.595 0.621 0.595 0.005 0 0.009-0 0.013-0h5.632l-6.49 9.287c-0.41 0.597-0.41 1.268-0.41 1.641v2.461c0 0.373 0.41 0.746 0.783 0.559 3.655-1.977 8.093-1.79 11.413-0.037 0.41 0.224 0.783-0.186 0.783-0.559v-2.573c-0.037-0.336-0.149-0.709-0.559-0.932-1.865-1.044-4.065-1.342-6.154-1.305l5.594-7.981c0.522-0.746 0.821-1.194 0.821-1.529l-0-2.053c-0.014-0.331-0.286-0.596-0.621-0.596-0.005 0-0.009 0-0.013 0l-10.814 0c-0.010-0.001-0.021-0.001-0.032-0.001-0.313 0-0.567 0.254-0.567 0.567 0 0.011 0 0.021 0.001 0.030v2.425zM22.005 18.536h-3.282c-0.304-0.032-0.546-0.261-0.596-0.555l-0.001-0.004v-16.858c0.014-0.333 0.286-0.597 0.621-0.597 0.005 0 0.009 0 0.014 0h3.058c0.315 0.005 0.571 0.248 0.597 0.557l0 0.002v2.2h0.075c0.783-2.126 2.312-3.133 4.326-3.133 2.051 0 3.357 1.007 4.252 3.133 0.783-2.126 2.611-3.133 4.55-3.133 1.38 0 2.872 0.559 3.804 1.865 1.044 1.417 0.821 3.468 0.821 5.296v10.667c-0.014 0.332-0.286 0.597-0.621 0.597-0.005 0-0.009-0-0.014-0h-3.244c-0.336-0.037-0.597-0.298-0.597-0.597v-8.951c0-0.709 0.075-2.499-0.075-3.17-0.261-1.119-0.97-1.455-1.939-1.455-0.894 0.026-1.652 0.583-1.971 1.365l-0.005 0.015c-0.336 0.858-0.298 2.275-0.298 3.245v8.951c-0.014 0.332-0.286 0.597-0.621 0.597-0.005 0-0.009-0-0.014-0h-3.281c-0.336-0.037-0.597-0.298-0.597-0.597v-8.951c0-1.865 0.298-4.662-2.014-4.662-2.35 0-2.275 2.685-2.275 4.662v8.951c-0.048 0.319-0.32 0.56-0.648 0.56-0.008 0-0.016-0-0.024-0l0.001 0zM82.797 0.149c4.886 0 7.534 4.177 7.534 9.51 0 5.147-2.909 9.249-7.534 9.249-4.774 0-7.385-4.177-7.385-9.399-0.037-5.259 2.611-9.362 7.385-9.362zM82.797 3.618c-2.424 0-2.573 3.319-2.573 5.371s-0.037 6.452 2.536 6.452c2.536 0 2.685-3.543 2.685-5.706 0-1.417-0.075-3.133-0.485-4.476-0.373-1.194-1.119-1.641-2.163-1.641zM96.634 18.536h-3.282c-0.336-0.037-0.597-0.298-0.597-0.597v-16.895c0.043-0.316 0.31-0.557 0.634-0.559h3.059c0.289 0.011 0.528 0.211 0.596 0.48l0.001 0.004v2.573h0.075c0.932-2.312 2.201-3.394 4.476-3.394 1.455 0 2.909 0.522 3.841 1.977 0.858 1.343 0.858 3.618 0.858 5.259v10.629c-0.046 0.297-0.3 0.523-0.607 0.523-0.010 0-0.019-0-0.029-0.001l0.001 0h-3.282c-0.298-0.037-0.559-0.261-0.597-0.522v-9.175c0-1.865 0.224-4.55-2.051-4.55-0.783 0-1.529 0.522-1.902 1.343-0.448 1.044-0.522 2.051-0.522 3.207v9.101c-0.044 0.336-0.327 0.594-0.671 0.597h-0zM52.811 10.48c0 1.268 0.037 2.35-0.597 3.506-0.522 0.932-1.343 1.492-2.275 1.492-1.268 0-2.014-0.97-2.014-2.387 0-2.797 2.499-3.319 4.886-3.319zM56.131 18.499c-0.118 0.103-0.273 0.166-0.443 0.166-0.125 0-0.242-0.034-0.343-0.093l0.003 0.002c-1.082-0.895-1.305-1.343-1.902-2.2-1.79 1.827-3.096 2.387-5.408 2.387-2.76 0-4.923-1.716-4.923-5.11 0-2.685 1.455-4.475 3.506-5.371 1.79-0.783 4.289-0.932 6.191-1.156v-0.41c0-0.783 0.075-1.716-0.41-2.387-0.41-0.597-1.156-0.858-1.827-0.858-1.268 0-2.387 0.634-2.648 1.977-0.075 0.298-0.261 0.597-0.559 0.597l-3.17-0.336c-0.261-0.075-0.559-0.261-0.485-0.671 0.746-3.879 4.214-5.035 7.347-5.035 1.604 0 3.692 0.41 4.96 1.641 1.604 1.492 1.455 3.506 1.455 5.669v5.11c0 1.529 0.634 2.2 1.231 3.058 0.224 0.298 0.261 0.671 0 0.858-0.709 0.559-1.902 1.604-2.573 2.163zM9.734 10.48c0 1.268 0.037 2.35-0.597 3.506-0.522 0.932-1.343 1.492-2.275 1.492-1.268 0-2.014-0.97-2.014-2.387 0-2.797 2.499-3.319 4.886-3.319zM13.016 18.499c-0.118 0.103-0.273 0.166-0.443 0.166-0.125 0-0.242-0.034-0.343-0.093l0.003 0.002c-1.082-0.895-1.305-1.343-1.902-2.2-1.79 1.827-3.096 2.387-5.408 2.387-2.76 0-4.923-1.716-4.923-5.11 0-2.685 1.455-4.475 3.506-5.371 1.79-0.783 4.289-0.932 6.191-1.156v-0.41c0-0.783 0.075-1.716-0.41-2.387-0.41-0.597-1.156-0.858-1.827-0.858-1.268 0-2.387 0.634-2.648 1.977-0.075 0.298-0.261 0.597-0.559 0.597l-3.17-0.336c-0.261-0.075-0.559-0.261-0.485-0.671 0.746-3.879 4.214-5.035 7.347-5.035 1.604 0 3.692 0.41 4.96 1.641 1.604 1.492 1.455 3.506 1.455 5.669v5.11c0 1.529 0.634 2.2 1.231 3.058 0.224 0.298 0.261 0.671 0 0.858-0.709 0.559-1.902 1.604-2.573 2.163z"></path>
+                            </svg>
+                        </a>
+                        <a href="${t.aplleBookBuyLink}" class="shoping-list__aplle-book">
+                            <svg class="addModal__apple-books-icon">
+                                <path fill="#B4AFAF" style="fill: var(--color3, #B4AFAF)" d="M20.352 1.6c2.88 0 4.352 0 5.888 0.48 1.696 0.608 3.040 1.952 3.648 3.648 0.512 1.568 0.512 3.008 0.512 5.92v8.704c0 2.88 0 4.352-0.48 5.888-0.608 1.696-1.952 3.040-3.648 3.648-1.568 0.512-3.008 0.512-5.92 0.512h-8.704c-2.88 0-4.352 0-5.888-0.48-1.696-0.64-3.040-1.984-3.68-3.68-0.48-1.536-0.48-2.976-0.48-5.888v-8.704c0-2.88 0-4.352 0.48-5.888 0.64-1.696 1.984-3.040 3.68-3.68 1.536-0.48 2.976-0.48 5.888-0.48h8.704z"></path>
+                                <path fill="#fff" style="fill: var(--color4, #fff)" d="M6.4 10.496s0.928-2.4 4.672-2.4c3.712 0 4.704 3.136 4.704 3.136v13.44s-1.184-3.584-4.672-3.584c-2.528 0-4.32 1.632-4.32 1.632-0.192 0.16-0.384 0.064-0.384-0.192v-12.032zM25.6 10.496v12c0 0.256-0.16 0.352-0.384 0.192 0 0-1.792-1.632-4.32-1.632-3.456 0-4.64 3.584-4.64 3.584v-13.44s0.96-3.136 4.704-3.136c3.712 0 4.64 2.432 4.64 2.432z"></path>
+                            </svg>
+                        </a>
+                    </li>`).join(""),console.log(1)});
+//# sourceMappingURL=basket.70dfe618.js.map
