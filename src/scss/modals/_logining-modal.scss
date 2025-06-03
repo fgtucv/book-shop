@@ -24,7 +24,7 @@
     align-items: center;
     // background-image: url("../../imeges/background.png");
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         width: 335px;
         height: 384px;
         padding-top: 40px;
@@ -38,7 +38,7 @@
     right: 24px;
     top: 24px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         right: 14px;
         top: 14px;
     }
@@ -49,7 +49,7 @@
     width: 28px;
     height: 28px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         width: 20px;
         height: 20px;
     }
@@ -63,7 +63,7 @@
     gap: 28px;
     margin-bottom: 20px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         width: 295px;
         gap: 24px;
         margin-bottom: 14px;
@@ -76,7 +76,7 @@
     border: 2px solid #111;
     padding: 20px 173px 20px 40px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         height: 50px;
         padding: 16px 173px 16px 24px;
     }
@@ -88,7 +88,7 @@
     font-weight: 700;
     text-transform: uppercase;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         font-size: 16px;
         font-weight: 700;
     }
@@ -103,7 +103,7 @@
     top: 190px;
     right: 72px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         top: 130px;
         right: 44px;
         width: 18px;
@@ -120,7 +120,7 @@
     top: 282px;
     right: 72px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         top: 204px;
         right: 46px;
         width: 18px;
@@ -139,7 +139,7 @@
     border: none;
     text-transform: uppercase;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         width: 294px;
         height: 50px;
         font-size: 16px;
@@ -170,7 +170,7 @@
 //     text-transform: uppercase;
 //     transition: color 500ms linear 250ms;
 
-//     @media screen and (max-width: 768px) {
+//     @media screen and (max-width: 767px) {
 //         font-size: 14px;
 //         font-weight: 700;
 //     }
@@ -183,7 +183,7 @@
     text-transform: uppercase;
     transition: color 500ms linear 250ms;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         font-size: 14px;
         font-weight: 700;
     }

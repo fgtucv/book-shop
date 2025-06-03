@@ -1,12 +1,7 @@
 const fonds = document.querySelectorAll(".support__item");
 const showeButton = document.querySelector(".support__scroll-button");
 
-console.log(showeButton)
-
-if (true === false) {
-    showeButton.addEventListener("click", showeMoreSupports);
-}
-
+showeButton.addEventListener("click", showeMoreSupports);
 
 function showeMoreSupports() {
     let count = 0;

@@ -16,13 +16,15 @@
         display: none; 
         width: 28px;
         height: 28px;
+        justify-content: center;
+        align-items: center;
 }
 
 .phone__close-icon {
         width: 28px;
         height: 28px;
         stroke: #111111;
-        transform: translate(0%, 18%);
+        // transform: translate(0%, 18%);
 }
 
 .phone__open-button {
