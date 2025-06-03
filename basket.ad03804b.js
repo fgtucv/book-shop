@@ -671,19 +671,69 @@ var _appJs = require("./basket-JS/app.js");
 var _buildHeaderJs = require("./basket-JS/createHtml/buildHeader.js");
 var _buildShopingListJs = require("./basket-JS/createHtml/buildShopingList.js");
 var _getAccountApiJs = require("./basket-JS/service/getAccountApi.js");
+var _showMoreSupportJs = require("./index-JS/operation/showMoreSupport.js");
+var _buildPaginationListJs = require("./basket-JS/createHtml/buildPaginationList.js");
+var _logOutJs = require("./index-JS/operation/logOut.js");
 
-},{"./basket-JS/app.js":"4B7eR","./basket-JS/createHtml/buildHeader.js":"aGUoO","./basket-JS/createHtml/buildShopingList.js":"1Fo69","./basket-JS/service/getAccountApi.js":"glLNx"}],"4B7eR":[function(require,module,exports,__globalThis) {
+},{"./basket-JS/app.js":"4B7eR","./basket-JS/createHtml/buildHeader.js":"aGUoO","./basket-JS/createHtml/buildShopingList.js":"1Fo69","./basket-JS/service/getAccountApi.js":"glLNx","./index-JS/operation/showMoreSupport.js":"uarTt","./basket-JS/createHtml/buildPaginationList.js":"6LkPE","./index-JS/operation/logOut.js":"20Js2"}],"4B7eR":[function(require,module,exports,__globalThis) {
 var _buildHeaderJs = require("./createHtml/buildHeader.js");
 var _buildShopingListJs = require("./createHtml/buildShopingList.js");
 var _getAccountApiJs = require("./service/getAccountApi.js");
+var _buildPaginationListJs = require("../basket-JS/createHtml/buildPaginationList.js");
+const paginationDiv = document.querySelector(".shoping-list__pagination-div");
+let page1 = 1;
+let page2 = 4;
+paginationDiv.addEventListener("click", pagination);
 (0, _buildHeaderJs.buildHeader)(JSON.parse(localStorage.getItem("account")));
-// buildShopingList(getAccount(JSON.parse(localStorage.getItem("account")).id));
 (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
-    (0, _buildShopingListJs.buildShopingList)(data);
-    console.log(1);
+    (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1 - 1, page2 - 1));
+    (0, _buildPaginationListJs.buildPaginationList)(data[0].cards.length);
 });
+function pagination(event) {
+    const element = event.target;
+    const active = document.querySelector(".active-number");
+    if (element.classList.contains("shoping-list__pagination-number")) {
+        page2 = Number(element.textContent) * 3;
+        page1 = page2 - 3;
+        (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
+            (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1, page2));
+        });
+        active.classList.remove("active-number");
+        element.classList.add("active-number");
+    } else if (element.classList.contains("shoping-list__pagination-back-too")) (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
+        (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(0, 3));
+    });
+    else if (element.classList.contains("shoping-list__pagination-back") && page1 >= 3) {
+        const backPage = document.getElementById(`${Number.parseInt(active.id) - 1}button`);
+        page1 = page1 - 3;
+        page2 = page2 - 3;
+        (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
+            (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1, page2));
+        });
+        active.classList.remove("active-number");
+        backPage.classList.add("active-number");
+    } else if (element.classList.contains("shoping-list__pagination-forward")) {
+        const nextPage = document.getElementById(`${Number.parseInt(active.id) + 1}button`);
+        page1 = page1 + 3;
+        page2 = page2 + 3;
+        (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
+            (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1, page2));
+        });
+        active.classList.remove("active-number");
+        nextPage.classList.add("active-number");
+    } else if (element.classList.contains("shoping-list__pagination-forward-too")) {
+        page1 = page1 + 3;
+        page2 = page2 + 3;
+        (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
+            page1 = Number.parseInt(data[0].cards.length / 3 + 1) * 3 - 3;
+            page2 = Number.parseInt(data[0].cards.length / 3 + 1) * 3;
+            console.log(page1, page2);
+            (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1, page2));
+        });
+    }
+}
 
-},{"./createHtml/buildHeader.js":"aGUoO","./createHtml/buildShopingList.js":"1Fo69","./service/getAccountApi.js":"glLNx"}],"aGUoO":[function(require,module,exports,__globalThis) {
+},{"./createHtml/buildHeader.js":"aGUoO","./createHtml/buildShopingList.js":"1Fo69","./service/getAccountApi.js":"glLNx","../basket-JS/createHtml/buildPaginationList.js":"6LkPE"}],"aGUoO":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "buildHeader", ()=>buildHeader);
@@ -799,9 +849,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "buildShopingList", ()=>buildShopingList);
 const sopingList = document.querySelector(".shoping-list__list");
-function buildShopingList(object) {
-    console.log(object[0].cards);
-    const html = object[0].cards.map((obj)=>{
+function buildShopingList(array) {
+    const html = array.map((obj)=>{
         return `
     <li class="shoping-list__item">
                         <img src="${obj.imgUrl}"
@@ -819,14 +868,14 @@ function buildShopingList(object) {
                         </button>
                         <a href="${obj.amazonBuyLink}"
                             class="shoping-list__amazon">
-                            <svg class="shoping-list__amazon-icon">
+                            <svg viewBox="0 0 106 32" class="shoping-list__amazon-icon">
                                <path fill="#B4AFAF" style="fill: var(--color1, #B4AFAF)" d="M65.939 25.026c-6.154 4.55-15.105 6.974-22.825 6.974-10.816 0-20.513-3.991-27.897-10.629-0.559-0.522-0.075-1.231 0.634-0.821 7.944 4.625 17.753 7.385 27.897 7.385 6.825 0 14.359-1.417 21.296-4.364 1.044-0.41 1.902 0.709 0.895 1.455z"></path>
                                <path fill="#B4AFAF" style="fill: var(--color1, #B4AFAF)" d="M68.513 22.079c-0.783-1.007-5.221-0.485-7.198-0.224-0.597 0.075-0.709-0.448-0.149-0.821 3.543-2.499 9.324-1.753 9.995-0.932s-0.186 6.638-3.506 9.399c-0.522 0.41-1.007 0.186-0.783-0.373 0.746-1.865 2.424-6.005 1.641-7.049z"></path>
                                <path fill="#000" style="fill: var(--color2, #000)" d="M61.427 3.506l0 0.001c0.014 0.331 0.287 0.595 0.621 0.595 0.005 0 0.009-0 0.013-0h5.632l-6.49 9.287c-0.41 0.597-0.41 1.268-0.41 1.641v2.461c0 0.373 0.41 0.746 0.783 0.559 3.655-1.977 8.093-1.79 11.413-0.037 0.41 0.224 0.783-0.186 0.783-0.559v-2.573c-0.037-0.336-0.149-0.709-0.559-0.932-1.865-1.044-4.065-1.342-6.154-1.305l5.594-7.981c0.522-0.746 0.821-1.194 0.821-1.529l-0-2.053c-0.014-0.331-0.286-0.596-0.621-0.596-0.005 0-0.009 0-0.013 0l-10.814 0c-0.010-0.001-0.021-0.001-0.032-0.001-0.313 0-0.567 0.254-0.567 0.567 0 0.011 0 0.021 0.001 0.030v2.425zM22.005 18.536h-3.282c-0.304-0.032-0.546-0.261-0.596-0.555l-0.001-0.004v-16.858c0.014-0.333 0.286-0.597 0.621-0.597 0.005 0 0.009 0 0.014 0h3.058c0.315 0.005 0.571 0.248 0.597 0.557l0 0.002v2.2h0.075c0.783-2.126 2.312-3.133 4.326-3.133 2.051 0 3.357 1.007 4.252 3.133 0.783-2.126 2.611-3.133 4.55-3.133 1.38 0 2.872 0.559 3.804 1.865 1.044 1.417 0.821 3.468 0.821 5.296v10.667c-0.014 0.332-0.286 0.597-0.621 0.597-0.005 0-0.009-0-0.014-0h-3.244c-0.336-0.037-0.597-0.298-0.597-0.597v-8.951c0-0.709 0.075-2.499-0.075-3.17-0.261-1.119-0.97-1.455-1.939-1.455-0.894 0.026-1.652 0.583-1.971 1.365l-0.005 0.015c-0.336 0.858-0.298 2.275-0.298 3.245v8.951c-0.014 0.332-0.286 0.597-0.621 0.597-0.005 0-0.009-0-0.014-0h-3.281c-0.336-0.037-0.597-0.298-0.597-0.597v-8.951c0-1.865 0.298-4.662-2.014-4.662-2.35 0-2.275 2.685-2.275 4.662v8.951c-0.048 0.319-0.32 0.56-0.648 0.56-0.008 0-0.016-0-0.024-0l0.001 0zM82.797 0.149c4.886 0 7.534 4.177 7.534 9.51 0 5.147-2.909 9.249-7.534 9.249-4.774 0-7.385-4.177-7.385-9.399-0.037-5.259 2.611-9.362 7.385-9.362zM82.797 3.618c-2.424 0-2.573 3.319-2.573 5.371s-0.037 6.452 2.536 6.452c2.536 0 2.685-3.543 2.685-5.706 0-1.417-0.075-3.133-0.485-4.476-0.373-1.194-1.119-1.641-2.163-1.641zM96.634 18.536h-3.282c-0.336-0.037-0.597-0.298-0.597-0.597v-16.895c0.043-0.316 0.31-0.557 0.634-0.559h3.059c0.289 0.011 0.528 0.211 0.596 0.48l0.001 0.004v2.573h0.075c0.932-2.312 2.201-3.394 4.476-3.394 1.455 0 2.909 0.522 3.841 1.977 0.858 1.343 0.858 3.618 0.858 5.259v10.629c-0.046 0.297-0.3 0.523-0.607 0.523-0.010 0-0.019-0-0.029-0.001l0.001 0h-3.282c-0.298-0.037-0.559-0.261-0.597-0.522v-9.175c0-1.865 0.224-4.55-2.051-4.55-0.783 0-1.529 0.522-1.902 1.343-0.448 1.044-0.522 2.051-0.522 3.207v9.101c-0.044 0.336-0.327 0.594-0.671 0.597h-0zM52.811 10.48c0 1.268 0.037 2.35-0.597 3.506-0.522 0.932-1.343 1.492-2.275 1.492-1.268 0-2.014-0.97-2.014-2.387 0-2.797 2.499-3.319 4.886-3.319zM56.131 18.499c-0.118 0.103-0.273 0.166-0.443 0.166-0.125 0-0.242-0.034-0.343-0.093l0.003 0.002c-1.082-0.895-1.305-1.343-1.902-2.2-1.79 1.827-3.096 2.387-5.408 2.387-2.76 0-4.923-1.716-4.923-5.11 0-2.685 1.455-4.475 3.506-5.371 1.79-0.783 4.289-0.932 6.191-1.156v-0.41c0-0.783 0.075-1.716-0.41-2.387-0.41-0.597-1.156-0.858-1.827-0.858-1.268 0-2.387 0.634-2.648 1.977-0.075 0.298-0.261 0.597-0.559 0.597l-3.17-0.336c-0.261-0.075-0.559-0.261-0.485-0.671 0.746-3.879 4.214-5.035 7.347-5.035 1.604 0 3.692 0.41 4.96 1.641 1.604 1.492 1.455 3.506 1.455 5.669v5.11c0 1.529 0.634 2.2 1.231 3.058 0.224 0.298 0.261 0.671 0 0.858-0.709 0.559-1.902 1.604-2.573 2.163zM9.734 10.48c0 1.268 0.037 2.35-0.597 3.506-0.522 0.932-1.343 1.492-2.275 1.492-1.268 0-2.014-0.97-2.014-2.387 0-2.797 2.499-3.319 4.886-3.319zM13.016 18.499c-0.118 0.103-0.273 0.166-0.443 0.166-0.125 0-0.242-0.034-0.343-0.093l0.003 0.002c-1.082-0.895-1.305-1.343-1.902-2.2-1.79 1.827-3.096 2.387-5.408 2.387-2.76 0-4.923-1.716-4.923-5.11 0-2.685 1.455-4.475 3.506-5.371 1.79-0.783 4.289-0.932 6.191-1.156v-0.41c0-0.783 0.075-1.716-0.41-2.387-0.41-0.597-1.156-0.858-1.827-0.858-1.268 0-2.387 0.634-2.648 1.977-0.075 0.298-0.261 0.597-0.559 0.597l-3.17-0.336c-0.261-0.075-0.559-0.261-0.485-0.671 0.746-3.879 4.214-5.035 7.347-5.035 1.604 0 3.692 0.41 4.96 1.641 1.604 1.492 1.455 3.506 1.455 5.669v5.11c0 1.529 0.634 2.2 1.231 3.058 0.224 0.298 0.261 0.671 0 0.858-0.709 0.559-1.902 1.604-2.573 2.163z"></path>
                             </svg>
                         </a>
                         <a href="${obj.aplleBookBuyLink}" class="shoping-list__aplle-book">
-                            <svg class="addModal__apple-books-icon">
+                            <svg viewBox="0 0 32 32" class="addModal__apple-books-icon">
                                 <path fill="#B4AFAF" style="fill: var(--color3, #B4AFAF)" d="M20.352 1.6c2.88 0 4.352 0 5.888 0.48 1.696 0.608 3.040 1.952 3.648 3.648 0.512 1.568 0.512 3.008 0.512 5.92v8.704c0 2.88 0 4.352-0.48 5.888-0.608 1.696-1.952 3.040-3.648 3.648-1.568 0.512-3.008 0.512-5.92 0.512h-8.704c-2.88 0-4.352 0-5.888-0.48-1.696-0.64-3.040-1.984-3.68-3.68-0.48-1.536-0.48-2.976-0.48-5.888v-8.704c0-2.88 0-4.352 0.48-5.888 0.64-1.696 1.984-3.040 3.68-3.68 1.536-0.48 2.976-0.48 5.888-0.48h8.704z"></path>
                                 <path fill="#fff" style="fill: var(--color4, #fff)" d="M6.4 10.496s0.928-2.4 4.672-2.4c3.712 0 4.704 3.136 4.704 3.136v13.44s-1.184-3.584-4.672-3.584c-2.528 0-4.32 1.632-4.32 1.632-0.192 0.16-0.384 0.064-0.384-0.192v-12.032zM25.6 10.496v12c0 0.256-0.16 0.352-0.384 0.192 0 0-1.792-1.632-4.32-1.632-3.456 0-4.64 3.584-4.64 3.584v-13.44s0.96-3.136 4.704-3.136c3.712 0 4.64 2.432 4.64 2.432z"></path>
                             </svg>
@@ -842,7 +891,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getAccountApi", ()=>getAccountApi);
 const getAccountApi = async (id)=>{
     try {
-        const account = await fetch(`https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts?id=${id}`).then((data)=>{
+        const account = await fetch(`https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts?id=${id}&l=3`).then((data)=>{
             return data.json();
         });
         return account;
@@ -851,6 +900,48 @@ const getAccountApi = async (id)=>{
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["ePCUa","2dm5W"], "2dm5W", "parcelRequireb734", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"6LkPE":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "buildPaginationList", ()=>buildPaginationList);
+const list = document.querySelector(".shoping-list__pagination-list");
+function buildPaginationList(qwentety) {
+    let html = [];
+    for(let i = 1; i < Number.parseInt(qwentety / 3) + 1; i++)html.push(`<li class="shoping-list__pagination-item"><button id="${i}button" type="button" class="shoping-list__pagination-number">${i + 1}</button></li>`);
+    list.insertAdjacentHTML("beforeend", html.join(""));
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"uarTt":[function(require,module,exports,__globalThis) {
+const fonds = document.querySelectorAll(".support__item");
+const showeButton = document.querySelector(".support__scroll-button");
+showeButton.addEventListener("click", showeMoreSupports);
+function showeMoreSupports() {
+    let count = 0;
+    fonds.forEach((element)=>{
+        if (count <= 2) element.classList.toggle("no-showe");
+        else if (count > 5) element.classList.toggle("no-showe");
+        count += 1;
+    });
+    if (fonds[0].classList.contains("no-showe")) showeButton.style.transform = "translate(-50%, 0%) rotate(0deg)";
+    else showeButton.style.transform = "translate(-50%, 0%) rotate(180deg)";
+}
+
+},{}],"20Js2":[function(require,module,exports,__globalThis) {
+const logOutButton = document.querySelector(".header__exit-button");
+const openAndCloseButton = document.querySelector(".header__account-button");
+if (JSON.parse(localStorage.getItem("status")) === "login") openAndCloseButton.addEventListener("click", howOrHideButton);
+else return;
+function howOrHideButton() {
+    if (logOutButton.classList.contains("is-hidden")) logOutButton.classList.remove("is-hidden");
+    else if (!logOutButton.classList.contains("is-hidden")) logOutButton.classList.add("is-hidden");
+}
+if (JSON.parse(localStorage.getItem("status")) === "login") logOutButton.addEventListener("click", logOut);
+else return;
+function logOut() {
+    localStorage.clear();
+    location.reload();
+}
+
+},{}]},["ePCUa","2dm5W"], "2dm5W", "parcelRequireb734", {})
 
 //# sourceMappingURL=basket.ad03804b.js.map

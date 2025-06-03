@@ -842,18 +842,22 @@ parcelHelpers.export(exports, "closeModal", ()=>closeModal);
 const openButton = document.querySelector(".header__menu-button");
 const closeButton = document.querySelector(".phone__close-button");
 const bacdrop = document.querySelector(".phone-bacdrop");
-if (JSON.parse(localStorage.getItem("status")) === "login") {
-    openButton.addEventListener("click", openModal);
-    closeButton.addEventListener("click", closeModal);
-} else return;
+const header = document.querySelector(".header");
+header.addEventListener("click", (event)=>{
+    if (event.target.parentNode.parentNode.classList.contains("header__menu-button") || event.target.parentNode.classList.contains("header__menu-button") || event.target.classList.contains("header__menu-button")) {
+        openModal();
+        closeButton.style.display = "flex";
+    } else return;
+});
+closeButton.addEventListener("click", closeModal);
 function openModal() {
     bacdrop.classList.remove("is-hidden");
     openButton.style.display = "none";
-    closeButton.style.display = "block";
+    closeButton.style.display = "flex";
 }
 function closeModal() {
     bacdrop.classList.add("is-hidden");
-    openButton.style.display = "block";
+    openButton.style.display = "flex";
     closeButton.style.display = "none";
 }
 
@@ -972,7 +976,7 @@ function changeCategory(event) {
 },{"../service/getBookapi":"eOevv","../createHtml/createBookList":"1TOVD"}],"uarTt":[function(require,module,exports,__globalThis) {
 const fonds = document.querySelectorAll(".support__item");
 const showeButton = document.querySelector(".support__scroll-button");
-console.log(showeButton);
+showeButton.addEventListener("click", showeMoreSupports);
 function showeMoreSupports() {
     let count = 0;
     fonds.forEach((element)=>{
@@ -1092,13 +1096,11 @@ const getAccount = async (name, email)=>{
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"20Js2":[function(require,module,exports,__globalThis) {
 const logOutButton = document.querySelector(".header__exit-button");
 const openAndCloseButton = document.querySelector(".header__account-button");
-openAndCloseButton.addEventListener("click", howOrHideButton);
+if (JSON.parse(localStorage.getItem("status")) === "login") openAndCloseButton.addEventListener("click", howOrHideButton);
+else return;
 function howOrHideButton() {
-    // console.log("1")
-    if (logOutButton.classList.contains("is-hidden")) {
-        logOutButton.classList.remove("is-hidden");
-        console.log("1");
-    } else if (!logOutButton.classList.contains("is-hidden")) logOutButton.classList.add("is-hidden");
+    if (logOutButton.classList.contains("is-hidden")) logOutButton.classList.remove("is-hidden");
+    else if (!logOutButton.classList.contains("is-hidden")) logOutButton.classList.add("is-hidden");
 }
 if (JSON.parse(localStorage.getItem("status")) === "login") logOutButton.addEventListener("click", logOut);
 else return;

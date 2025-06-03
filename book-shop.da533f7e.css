@@ -6,7 +6,7 @@ body {
   font-style: normal;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   body {
     padding-top: 64px;
   }
@@ -30,7 +30,13 @@ span, h1, h2, h3 {
   display: flex;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 1079px) {
+  .main .container {
+    display: block;
+  }
+}
+
+@media screen and (width <= 767px) {
   .main .container {
     display: block;
   }
@@ -50,7 +56,7 @@ span, h1, h2, h3 {
   }
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .container {
     width: 335px;
   }
@@ -88,6 +94,7 @@ input {
 
 button {
   outline: none;
+  padding: 0;
 }
 
 .magazine__button:hover {
@@ -131,7 +138,7 @@ button {
   display: flex;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .header .container {
     height: 64px;
   }
@@ -143,11 +150,35 @@ button {
   margin-right: 76px;
 }
 
+@media screen and (width <= 1079px) {
+  .header__logo {
+    margin-right: 40px;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .header__logo {
+    margin-right: auto;
+  }
+}
+
 .header__nav-list {
   align-items: center;
   gap: 24px;
   height: 34px;
   display: inline-flex;
+}
+
+@media screen and (width <= 1079px) {
+  .header__nav-list {
+    gap: 16px;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .header__nav-list {
+    display: none;
+  }
 }
 
 .header__nav-item {
@@ -189,7 +220,7 @@ button {
   position: relative;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .header__switch {
     margin-right: 14px;
   }
@@ -252,6 +283,12 @@ button {
   position: relative;
 }
 
+@media screen and (width <= 767px) {
+  .header__account-div {
+    display: none;
+  }
+}
+
 .header__account-avatar-div {
   background-color: #f6f6f6;
   border-radius: 50%;
@@ -299,13 +336,13 @@ button {
   display: none;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .header__menu-button {
     background: none;
     border: none;
-    width: 28px;
-    height: 28px;
-    display: block;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
 }
 
@@ -313,13 +350,12 @@ button {
   display: none;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .header__menu-icon {
     stroke: #111;
     width: 28px;
     height: 28px;
     display: block;
-    transform: translate(0%, 18%);
   }
 }
 
@@ -337,7 +373,7 @@ button {
   display: flex;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .header__open-button {
     display: none;
   }
@@ -379,14 +415,32 @@ button {
   margin-right: 40px;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 1079px) {
   .info {
-    padding-bottom: 40px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 100px;
+    margin-right: 0;
+    display: flex;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .info {
+    flex-wrap: wrap;
+    margin-bottom: 40px;
   }
 }
 
 .category {
   margin-bottom: 170px;
+}
+
+@media screen and (width <= 1079px) {
+  .category {
+    margin-bottom: 0;
+  }
 }
 
 .category__list {
@@ -397,7 +451,13 @@ button {
   overflow: hidden scroll;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 1079px) {
+  .category__list {
+    height: 472px;
+  }
+}
+
+@media screen and (width <= 767px) {
   .category__list {
     gap: 24px;
     height: 228px;
@@ -418,7 +478,7 @@ button {
   transition: color .5s linear .25s;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .category__span {
     font-size: 16px;
     font-weight: 400;
@@ -432,7 +492,7 @@ button {
   font-weight: 700;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .active {
     font-size: 16px;
   }
@@ -451,9 +511,10 @@ button {
   box-shadow: 0 10px 10px #f5f5f71a;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 1079px) {
   .support {
     width: 335px;
+    padding-top: 24px;
   }
 }
 
@@ -469,7 +530,7 @@ button {
   display: flex;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .support__title {
     margin-bottom: 44px;
     font-size: 22px;
@@ -545,7 +606,7 @@ button {
   line-height: 52px;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .shop_title {
     font-size: 32px;
     font-weight: 700;
@@ -560,6 +621,12 @@ button {
   flex-wrap: wrap;
   gap: 24px;
   display: flex;
+}
+
+@media screen and (width <= 1079px) {
+  .magazine {
+    justify-content: center;
+  }
 }
 
 .magazine__type-title {
@@ -578,12 +645,18 @@ button {
   display: flex;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .magazine__book-list {
     display: block;
   }
 
   .magazine__book-list .magazine__item:not(:first-child) {
+    display: none;
+  }
+}
+
+@media screen and (width <= 1079px) {
+  .magazine__item:nth-last-of-type(-n+2) {
     display: none;
   }
 }
@@ -596,7 +669,14 @@ button {
   transition: transform .5s linear .25s;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 1079px) {
+  .magazine__img {
+    width: 218px;
+    height: 316px;
+  }
+}
+
+@media screen and (width <= 767px) {
   .magazine__img {
     width: 335px;
     height: 485px;
@@ -614,11 +694,9 @@ button {
   line-height: 18px;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .magazine__book-name {
     max-width: 335px;
-    font-size: 16px;
-    font-weight: 700;
   }
 }
 
@@ -632,9 +710,8 @@ button {
   line-height: 14px;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .magazine__book-author {
-    font-size: 12px;
     font-weight: 400;
   }
 }
@@ -678,7 +755,7 @@ button {
   transform: translate(-50%, -50%);
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal {
     width: 335px;
     height: 384px;
@@ -694,7 +771,7 @@ button {
   right: 24px;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal__close-button {
     top: 14px;
     right: 14px;
@@ -707,7 +784,7 @@ button {
   height: 28px;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal__close-icon {
     width: 20px;
     height: 20px;
@@ -722,7 +799,7 @@ button {
   display: flex;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal__form {
     gap: 24px;
     width: 295px;
@@ -737,7 +814,7 @@ button {
   padding: 20px 173px 20px 40px;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal__input {
     height: 50px;
     padding: 16px 173px 16px 24px;
@@ -751,7 +828,7 @@ button {
   font-weight: 700;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal__input::placeholder {
     font-size: 16px;
     font-weight: 700;
@@ -768,7 +845,7 @@ button {
   right: 72px;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal__email-icon {
     width: 18px;
     height: 18px;
@@ -787,7 +864,7 @@ button {
   right: 72px;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal__password-icon {
     width: 18px;
     height: 18px;
@@ -808,7 +885,7 @@ button {
   font-weight: 700;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal__submit-button {
     width: 294px;
     height: 50px;
@@ -842,7 +919,7 @@ button {
   transition: color .5s linear .25s;
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 767px) {
   .login-modal__type-button {
     font-size: 14px;
     font-weight: 700;
@@ -861,6 +938,8 @@ button {
 .phone__close-button {
   background: none;
   border: none;
+  justify-content: center;
+  align-items: center;
   width: 28px;
   height: 28px;
   display: none;
@@ -870,7 +949,6 @@ button {
   stroke: #111;
   width: 28px;
   height: 28px;
-  transform: translate(0%, 18%);
 }
 
 .phone__open-button {
