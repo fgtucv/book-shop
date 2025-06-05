@@ -50,7 +50,7 @@ span, h1, h2, h3 {
   padding: 0;
 }
 
-@media screen and (width <= 1440px) {
+@media screen and (width <= 1079px) {
   .container {
     width: 704px;
   }
@@ -1074,5 +1074,112 @@ button {
   font-weight: 700;
   line-height: 24px;
   display: flex;
+}
+
+.phoneLogin-bacdrop {
+  z-index: 999;
+  background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8 18.03%, #fff 100%);
+  padding-top: 84px;
+  padding-left: 20px;
+  position: fixed;
+  inset: 0;
+}
+
+.phoneLogin__account-div {
+  align-items: center;
+  display: flex;
+}
+
+.phoneLogin__account-avatar-div {
+  background-color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 9px;
+  display: flex;
+}
+
+.phoneLogin__account-avatar {
+  fill: #4f2ee8;
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+}
+
+.phoneLogin__account-name {
+  color: #fff;
+  letter-spacing: -.44px;
+  margin-left: 9px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.phoneLogin__nav-list {
+  width: fit-content;
+  margin-top: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.phoneLogin__nav-item {
+  align-items: center;
+  display: flex;
+}
+
+.phoneLogin__nav-item:first-child {
+  margin-bottom: 16px;
+}
+
+.active-nav-item {
+  background: #eac645;
+  border-radius: 36px;
+  width: fit-content;
+  padding: 8px 16px;
+}
+
+.phoneLogin__nav-link {
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.active-nav-link {
+  color: #111;
+  font-weight: 700;
+}
+
+.phoneLogin__nav-icon {
+  stroke: #fff;
+  fill: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+.phoneLogin__exit-button {
+  color: #000;
+  letter-spacing: -.56px;
+  white-space: nowrap;
+  background-color: #fff;
+  border: 1.5px solid #111;
+  border-radius: 18px;
+  align-items: center;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+}
+
+.phoneLogin__exit-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
 }
 /*# sourceMappingURL=book-shop.da533f7e.css.map */

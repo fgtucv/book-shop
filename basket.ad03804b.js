@@ -674,13 +674,16 @@ var _getAccountApiJs = require("./basket-JS/service/getAccountApi.js");
 var _showMoreSupportJs = require("./index-JS/operation/showMoreSupport.js");
 var _buildPaginationListJs = require("./basket-JS/createHtml/buildPaginationList.js");
 var _logOutJs = require("./index-JS/operation/logOut.js");
+var _phoneModalJs = require("./index-JS/modal/phoneModal.js");
 
-},{"./basket-JS/app.js":"4B7eR","./basket-JS/createHtml/buildHeader.js":"aGUoO","./basket-JS/createHtml/buildShopingList.js":"1Fo69","./basket-JS/service/getAccountApi.js":"glLNx","./index-JS/operation/showMoreSupport.js":"uarTt","./basket-JS/createHtml/buildPaginationList.js":"6LkPE","./index-JS/operation/logOut.js":"20Js2"}],"4B7eR":[function(require,module,exports,__globalThis) {
+},{"./basket-JS/app.js":"4B7eR","./basket-JS/createHtml/buildHeader.js":"aGUoO","./basket-JS/createHtml/buildShopingList.js":"1Fo69","./basket-JS/service/getAccountApi.js":"glLNx","./index-JS/operation/showMoreSupport.js":"uarTt","./basket-JS/createHtml/buildPaginationList.js":"6LkPE","./index-JS/operation/logOut.js":"20Js2","./index-JS/modal/phoneModal.js":"lY3I2"}],"4B7eR":[function(require,module,exports,__globalThis) {
 var _buildHeaderJs = require("./createHtml/buildHeader.js");
 var _buildShopingListJs = require("./createHtml/buildShopingList.js");
 var _getAccountApiJs = require("./service/getAccountApi.js");
 var _buildPaginationListJs = require("../basket-JS/createHtml/buildPaginationList.js");
+var _phoneModalJs = require("../index-JS/modal/phoneModal.js");
 const paginationDiv = document.querySelector(".shoping-list__pagination-div");
+const body = document.querySelector("body");
 let page1 = 1;
 let page2 = 4;
 paginationDiv.addEventListener("click", pagination);
@@ -692,7 +695,7 @@ paginationDiv.addEventListener("click", pagination);
 function pagination(event) {
     const element = event.target;
     const active = document.querySelector(".active-number");
-    if (element.classList.contains("shoping-list__pagination-number")) {
+    if (element.classList.contains("shoping-list__pagination-number") && element.id !== "buffer") {
         page2 = Number(element.textContent) * 3;
         page1 = page2 - 3;
         (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
@@ -700,7 +703,10 @@ function pagination(event) {
         });
         active.classList.remove("active-number");
         element.classList.add("active-number");
-    } else if (element.classList.contains("shoping-list__pagination-back-too")) (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
+    } else if (element.classList.contains("shoping-list__pagination-back-too") && page1 >= 3) (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
+        const backActive = document.getElementById(`0button`);
+        backActive.classList.add("active-number");
+        active.classList.remove("active-number");
         (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(0, 3));
     });
     else if (element.classList.contains("shoping-list__pagination-back") && page1 >= 3) {
@@ -710,30 +716,45 @@ function pagination(event) {
         (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
             (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1, page2));
         });
+        if (body.offsetWidth < 768 && Number.parseInt(active.id) - 2 >= 0) {
+            console.log(0);
+            backPage.parentNode.classList.remove("is-hidden");
+            const noHideElement = document.getElementById(`${Number.parseInt(active.id) - 2}button`);
+            noHideElement.parentNode.classList.remove("is-hidden");
+            active.parentNode.classList.add("is-hidden");
+        }
         active.classList.remove("active-number");
         backPage.classList.add("active-number");
-    } else if (element.classList.contains("shoping-list__pagination-forward")) {
+    } else if (element.classList.contains("shoping-list__pagination-forward") && document.getElementById(`${Number.parseInt(active.id) + 1}button`) !== null) {
         const nextPage = document.getElementById(`${Number.parseInt(active.id) + 1}button`);
         page1 = page1 + 3;
         page2 = page2 + 3;
         (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
             (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1, page2));
         });
+        if (body.offsetWidth < 768 && Number.parseInt(active.id) - 1 >= 0) {
+            nextPage.parentNode.classList.remove("is-hidden");
+            const hideElement = document.getElementById(`${Number.parseInt(active.id) - 1}button`);
+            hideElement.parentNode.classList.add("is-hidden");
+        }
         active.classList.remove("active-number");
         nextPage.classList.add("active-number");
-    } else if (element.classList.contains("shoping-list__pagination-forward-too")) {
+    } else if (element.classList.contains("shoping-list__pagination-forward-too") && document.getElementById(`${Number.parseInt(active.id) + 1}button`) !== null) {
         page1 = page1 + 3;
         page2 = page2 + 3;
         (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
             page1 = Number.parseInt(data[0].cards.length / 3 + 1) * 3 - 3;
             page2 = Number.parseInt(data[0].cards.length / 3 + 1) * 3;
-            console.log(page1, page2);
+            const nextActive = document.getElementById(`${Number.parseInt(data[0].cards.length / 3)}button`);
+            nextActive.classList.add("active-number");
+            active.classList.remove("active-number");
             (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1, page2));
         });
     }
 }
+(0, _phoneModalJs.inicalization)();
 
-},{"./createHtml/buildHeader.js":"aGUoO","./createHtml/buildShopingList.js":"1Fo69","./service/getAccountApi.js":"glLNx","../basket-JS/createHtml/buildPaginationList.js":"6LkPE"}],"aGUoO":[function(require,module,exports,__globalThis) {
+},{"./createHtml/buildHeader.js":"aGUoO","./createHtml/buildShopingList.js":"1Fo69","./service/getAccountApi.js":"glLNx","../basket-JS/createHtml/buildPaginationList.js":"6LkPE","../index-JS/modal/phoneModal.js":"lY3I2"}],"aGUoO":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "buildHeader", ()=>buildHeader);
@@ -905,10 +926,53 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "buildPaginationList", ()=>buildPaginationList);
 const list = document.querySelector(".shoping-list__pagination-list");
+const body = document.querySelector("body");
 function buildPaginationList(qwentety) {
     let html = [];
-    for(let i = 1; i < Number.parseInt(qwentety / 3) + 1; i++)html.push(`<li class="shoping-list__pagination-item"><button id="${i}button" type="button" class="shoping-list__pagination-number">${i + 1}</button></li>`);
+    for(let i = 1; i < Number.parseInt(qwentety / 3) + 1; i++)if (Number.parseInt(qwentety / 3) + 1 > 2 && i + 1 > 2 && body.offsetWidth < 768) {
+        html.push(`<li class="shoping-list__pagination-item is-hidden"><button id="${i}button" type="button" class="shoping-list__pagination-number">${i + 1}</button></li>`);
+        if (i === Number.parseInt(qwentety / 3)) html.push(`<li class="shoping-list__pagination-item"><button id="buffer" type="button" class="shoping-list__pagination-number">...</button></li>`);
+    } else html.push(`<li class="shoping-list__pagination-item"><button id="${i}button" type="button" class="shoping-list__pagination-number">${i + 1}</button></li>`);
     list.insertAdjacentHTML("beforeend", html.join(""));
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"lY3I2":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "inicalization", ()=>inicalization);
+parcelHelpers.export(exports, "closeModal", ()=>closeModal);
+const noLoginbacdrop = document.querySelector(".phone-bacdrop");
+const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
+const name = document.querySelector(".phoneLogin__account-name");
+const header = document.querySelector(".header");
+let openButton;
+let closeButton;
+const inicalization = function() {
+    openButton = document.querySelector(".header__menu-button");
+    closeButton = document.querySelector(".phone__close-button");
+    openButton.addEventListener("click", openModal);
+    closeButton.addEventListener("click", closeModal);
+};
+// header.addEventListener("click", (event) => {
+//     openButton = document.querySelector(".header__menu-button");
+//     closeButton = document.querySelector(".phone__close-button");
+//     openButton.addEventListener("click", openModal)
+//     closeButton.addEventListener("click", closeModal);
+// });
+function openModal() {
+    if (JSON.parse(localStorage.getItem("status")) === "no login") noLoginbacdrop.classList.remove("is-hidden");
+    else if (JSON.parse(localStorage.getItem("status")) === "login") {
+        loginbacdrop.classList.remove("is-hidden");
+        name.textContent = JSON.parse(localStorage.getItem("account")).name;
+    }
+    openButton.style.display = "none";
+    closeButton.style.display = "flex";
+}
+function closeModal() {
+    if (JSON.parse(localStorage.getItem("status")) === "no login") noLoginbacdrop.classList.add("is-hidden");
+    else if (JSON.parse(localStorage.getItem("status")) === "login") loginbacdrop.classList.add("is-hidden");
+    openButton.style.display = "flex";
+    closeButton.style.display = "none";
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"uarTt":[function(require,module,exports,__globalThis) {
@@ -928,6 +992,7 @@ function showeMoreSupports() {
 
 },{}],"20Js2":[function(require,module,exports,__globalThis) {
 const logOutButton = document.querySelector(".header__exit-button");
+const logOutButtonInPhone = document.querySelector(".phoneLogin__exit-button");
 const openAndCloseButton = document.querySelector(".header__account-button");
 if (JSON.parse(localStorage.getItem("status")) === "login") openAndCloseButton.addEventListener("click", howOrHideButton);
 else return;
@@ -935,8 +1000,10 @@ function howOrHideButton() {
     if (logOutButton.classList.contains("is-hidden")) logOutButton.classList.remove("is-hidden");
     else if (!logOutButton.classList.contains("is-hidden")) logOutButton.classList.add("is-hidden");
 }
-if (JSON.parse(localStorage.getItem("status")) === "login") logOutButton.addEventListener("click", logOut);
-else return;
+if (JSON.parse(localStorage.getItem("status")) === "login") {
+    logOutButton.addEventListener("click", logOut);
+    logOutButtonInPhone.addEventListener("click", logOut);
+} else return;
 function logOut() {
     localStorage.clear();
     location.reload();
