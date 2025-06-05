@@ -675,17 +675,17 @@ var _showMoreSupportJs = require("./index-JS/operation/showMoreSupport.js");
 var _getBookapiJs = require("./index-JS/service/getBookapi.js");
 var _createBookListJs = require("./index-JS/createHtml/createBookList.js");
 var _loginModalJs = require("./index-JS/modal/loginModal.js");
-// import "./index-JS/modal/phoneModal.js";
-// import "./index-JS/createHtml/buildHeader.js";
-// import "./index-JS/service/getAccountApi.js";
-// import "./index-JS/service/postAccount.js";
-// import "./index-JS/operation/logOut.js";
-// import "./index-JS/operation/seeMoreButton.js";
-// import "./index-JS/modal/addToShopingListModal.js";
-// import "./index-JS/service/updateAccount.js";
+var _phoneModalJs = require("./index-JS/modal/phoneModal.js");
+var _buildHeaderJs = require("./index-JS/createHtml/buildHeader.js");
+var _getAccountApiJs = require("./index-JS/service/getAccountApi.js");
+var _postAccountJs = require("./index-JS/service/postAccount.js");
+var _logOutJs = require("./index-JS/operation/logOut.js");
+var _seeMoreButtonJs = require("./index-JS/operation/seeMoreButton.js");
+var _addToShopingListModalJs = require("./index-JS/modal/addToShopingListModal.js");
+var _updateAccountJs = require("./index-JS/service/updateAccount.js");
 var _cxaJs = require("./index-JS/cxa.js");
 
-},{"./index-JS/app.js":"5Al9P","./index-JS/service/getCategoryApi.js":"iA63L","./index-JS/createHtml/createCetegoryList.js":"hbtQp","./index-JS/operation/changeCtagory.js":"5Wnwi","./index-JS/operation/showMoreSupport.js":"uarTt","./index-JS/service/getBookapi.js":"eOevv","./index-JS/createHtml/createBookList.js":"1TOVD","./index-JS/modal/loginModal.js":"3nRph","./index-JS/cxa.js":"4ib6C"}],"5Al9P":[function(require,module,exports,__globalThis) {
+},{"./index-JS/app.js":"5Al9P","./index-JS/service/getCategoryApi.js":"iA63L","./index-JS/createHtml/createCetegoryList.js":"hbtQp","./index-JS/operation/changeCtagory.js":"5Wnwi","./index-JS/operation/showMoreSupport.js":"uarTt","./index-JS/service/getBookapi.js":"eOevv","./index-JS/createHtml/createBookList.js":"1TOVD","./index-JS/modal/loginModal.js":"3nRph","./index-JS/modal/phoneModal.js":"lY3I2","./index-JS/createHtml/buildHeader.js":"kRKgY","./index-JS/service/getAccountApi.js":"gsdH5","./index-JS/service/postAccount.js":"eM897","./index-JS/operation/logOut.js":"20Js2","./index-JS/operation/seeMoreButton.js":"hjmZr","./index-JS/modal/addToShopingListModal.js":"7KSyY","./index-JS/service/updateAccount.js":"6JkEO","./index-JS/cxa.js":"4ib6C"}],"5Al9P":[function(require,module,exports,__globalThis) {
 var _getCategoryApiJs = require("./service/getCategoryApi.js");
 var _createCetegoryListJs = require("./createHtml/createCetegoryList.js");
 var _createBookListJs = require("./createHtml/createBookList.js");
@@ -1102,6 +1102,125 @@ parcelHelpers.export(exports, "getAccount", ()=>getAccount);
 const getAccount = async (name, email)=>{
     try {
         const account = await fetch(`https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts?name=${name}&email=${email}`).then((data)=>{
+            return data.json();
+        });
+        return account;
+    } catch (error) {
+        return error;
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"20Js2":[function(require,module,exports,__globalThis) {
+const logOutButton = document.querySelector(".header__exit-button");
+const logOutButtonInPhone = document.querySelector(".phoneLogin__exit-button");
+const openAndCloseButton = document.querySelector(".header__account-button");
+if (JSON.parse(localStorage.getItem("status")) === "login") openAndCloseButton.addEventListener("click", howOrHideButton);
+else return;
+function howOrHideButton() {
+    if (logOutButton.classList.contains("is-hidden")) logOutButton.classList.remove("is-hidden");
+    else if (!logOutButton.classList.contains("is-hidden")) logOutButton.classList.add("is-hidden");
+}
+if (JSON.parse(localStorage.getItem("status")) === "login") {
+    logOutButton.addEventListener("click", logOut);
+    logOutButtonInPhone.addEventListener("click", logOut);
+} else return;
+function logOut() {
+    localStorage.clear();
+    location.reload();
+}
+
+},{}],"hjmZr":[function(require,module,exports,__globalThis) {
+var _createBookListJs = require("../createHtml/createBookList.js");
+var _getBookapi = require("../service/getBookapi");
+const list = document.querySelector(".magazine");
+const categoryTitle = document.querySelector(".shop_title");
+list.addEventListener("click", seeMore);
+function seeMore(event) {
+    const element = event.target;
+    if (element.classList.contains("magazine__button")) {
+        (0, _getBookapi.getBookApi)(`https://books-backend.p.goit.global/books/category?category=${element.getAttribute("data-type")}`).then((data)=>{
+            (0, _createBookListJs.createBookList)(data);
+        });
+        const text = element.getAttribute("data-type").split(" ");
+        categoryTitle.innerHTML = `${text.slice(0, -1).join(" ")} <span class="shop_title-purpure">${text.at(-1)}</span>`;
+    } else return;
+}
+
+},{"../createHtml/createBookList.js":"1TOVD","../service/getBookapi":"eOevv"}],"7KSyY":[function(require,module,exports,__globalThis) {
+var _updateAccount = require("../service/updateAccount");
+const list = document.querySelector(".magazine");
+const backdrop = document.querySelector(".addModal-backdrop");
+const closeButton = document.querySelector(".addModal__close-button");
+const submitButton = document.querySelector(".addModal__button");
+const img = document.querySelector(".addModal__img");
+const title = document.querySelector(".addModal__title");
+const text = document.querySelector(".addModal__text");
+const name = document.querySelector(".addModal__name");
+list.addEventListener("click", openAddToShopingListModal);
+closeButton.addEventListener("click", closeAddToShopingListModal);
+submitButton.addEventListener("click", addToShopingList);
+let cardImg;
+let cardTitle;
+let cardText;
+let cardName;
+let cardId;
+let amazon;
+let aplleBook;
+let cardType;
+function openAddToShopingListModal(event) {
+    const element = event.target.parentNode;
+    if (element.classList.contains("magazine__item")) {
+        img.src = element.getAttribute("data-img");
+        title.textContent = element.getAttribute("data-title");
+        text.textContent = element.getAttribute("data-description");
+        name.textContent = element.getAttribute("data-author");
+        cardImg = element.getAttribute("data-img");
+        cardTitle = element.getAttribute("data-title");
+        cardText = element.getAttribute("data-description");
+        cardName = element.getAttribute("data-author");
+        cardId = element.id;
+        cardType = element.getAttribute("data-type");
+        amazon = element.getAttribute("data-amazon");
+        aplleBook = element.getAttribute("data-aplle");
+        backdrop.classList.remove("is-hidden");
+    }
+}
+function closeAddToShopingListModal() {
+    backdrop.classList.add("is-hidden");
+}
+function addToShopingList() {
+    const object = {
+        id: cardId,
+        imgUrl: cardImg,
+        title: cardTitle,
+        text: cardText,
+        type: cardType,
+        authorName: cardName,
+        amazonBuyLink: amazon,
+        aplleBookBuyLink: aplleBook
+    };
+    let account = JSON.parse(localStorage.getItem("account"));
+    let array = account.cards;
+    array.push(object);
+    localStorage.setItem("account", JSON.stringify(account));
+    (0, _updateAccount.updateAccount)(JSON.parse(localStorage.getItem("account")), JSON.parse(localStorage.getItem("account")).id);
+    backdrop.classList.add("is-hidden");
+}
+
+},{"../service/updateAccount":"6JkEO"}],"6JkEO":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "updateAccount", ()=>updateAccount);
+const updateAccount = async function updateAccount(obj, id) {
+    try {
+        const options = {
+            method: "PUT",
+            body: JSON.stringify(obj),
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            }
+        };
+        const account = await fetch(`https://67a8ab426e9548e44fc1adc4.mockapi.io/projects/accounts/${id}`, options).then((data)=>{
             return data.json();
         });
         return account;
