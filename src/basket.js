@@ -7,4 +7,4 @@ import "./basket-JS/createHtml/buildPaginationList.js";
 import "./index-JS/operation/logOut.js";
 import "./index-JS/modal/phoneModal.js";
 
-import "./index-JS/cxa.js";
+// import "./index-JS/cxa.js";

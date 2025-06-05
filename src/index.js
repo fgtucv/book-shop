@@ -15,4 +15,4 @@ import "./index-JS/operation/seeMoreButton.js";
 import "./index-JS/modal/addToShopingListModal.js";
 import "./index-JS/service/updateAccount.js";
 
-import "./index-JS/cxa.js";
+// import "./index-JS/cxa.js";

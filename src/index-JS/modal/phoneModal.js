@@ -1,7 +1,10 @@
-const noLoginbacdrop = document.querySelector(".phone-bacdrop");
-const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
-const name = document.querySelector(".phoneLogin__account-name");
-const header = document.querySelector(".header");
+document.addEventListener("DOMContentLoaded", () => {
+    const noLoginbacdrop = document.querySelector(".phone-bacdrop");
+    const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
+    const name = document.querySelector(".phoneLogin__account-name");
+    const header = document.querySelector(".header");
+})
+
 
 let openButton;
 let closeButton;

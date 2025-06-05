@@ -682,10 +682,9 @@ var _postAccountJs = require("./index-JS/service/postAccount.js");
 var _logOutJs = require("./index-JS/operation/logOut.js");
 var _seeMoreButtonJs = require("./index-JS/operation/seeMoreButton.js");
 var _addToShopingListModalJs = require("./index-JS/modal/addToShopingListModal.js");
-var _updateAccountJs = require("./index-JS/service/updateAccount.js");
-var _cxaJs = require("./index-JS/cxa.js");
+var _updateAccountJs = require("./index-JS/service/updateAccount.js"); // import "./index-JS/cxa.js";
 
-},{"./index-JS/app.js":"5Al9P","./index-JS/service/getCategoryApi.js":"iA63L","./index-JS/createHtml/createCetegoryList.js":"hbtQp","./index-JS/operation/changeCtagory.js":"5Wnwi","./index-JS/operation/showMoreSupport.js":"uarTt","./index-JS/service/getBookapi.js":"eOevv","./index-JS/createHtml/createBookList.js":"1TOVD","./index-JS/modal/loginModal.js":"3nRph","./index-JS/modal/phoneModal.js":"lY3I2","./index-JS/createHtml/buildHeader.js":"kRKgY","./index-JS/service/getAccountApi.js":"gsdH5","./index-JS/service/postAccount.js":"eM897","./index-JS/operation/logOut.js":"20Js2","./index-JS/operation/seeMoreButton.js":"hjmZr","./index-JS/modal/addToShopingListModal.js":"7KSyY","./index-JS/service/updateAccount.js":"6JkEO","./index-JS/cxa.js":"4ib6C"}],"5Al9P":[function(require,module,exports,__globalThis) {
+},{"./index-JS/app.js":"5Al9P","./index-JS/service/getCategoryApi.js":"iA63L","./index-JS/createHtml/createCetegoryList.js":"hbtQp","./index-JS/operation/changeCtagory.js":"5Wnwi","./index-JS/operation/showMoreSupport.js":"uarTt","./index-JS/service/getBookapi.js":"eOevv","./index-JS/createHtml/createBookList.js":"1TOVD","./index-JS/modal/loginModal.js":"3nRph","./index-JS/modal/phoneModal.js":"lY3I2","./index-JS/createHtml/buildHeader.js":"kRKgY","./index-JS/service/getAccountApi.js":"gsdH5","./index-JS/service/postAccount.js":"eM897","./index-JS/operation/logOut.js":"20Js2","./index-JS/operation/seeMoreButton.js":"hjmZr","./index-JS/modal/addToShopingListModal.js":"7KSyY","./index-JS/service/updateAccount.js":"6JkEO"}],"5Al9P":[function(require,module,exports,__globalThis) {
 var _getCategoryApiJs = require("./service/getCategoryApi.js");
 var _createCetegoryListJs = require("./createHtml/createCetegoryList.js");
 var _createBookListJs = require("./createHtml/createBookList.js");
@@ -842,10 +841,12 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "inicalization", ()=>inicalization);
 parcelHelpers.export(exports, "closeModal", ()=>closeModal);
-const noLoginbacdrop = document.querySelector(".phone-bacdrop");
-const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
-const name = document.querySelector(".phoneLogin__account-name");
-const header = document.querySelector(".header");
+document.addEventListener("DOMContentLoaded", ()=>{
+    const noLoginbacdrop1 = document.querySelector(".phone-bacdrop");
+    const loginbacdrop1 = document.querySelector(".phoneLogin-bacdrop");
+    const name1 = document.querySelector(".phoneLogin__account-name");
+    const header = document.querySelector(".header");
+});
 let openButton;
 let closeButton;
 const inicalization = function() {
@@ -1231,9 +1232,6 @@ const updateAccount = async function updateAccount(obj, id) {
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4ib6C":[function(require,module,exports,__globalThis) {
-console.log(1);
-
-},{}]},["5j6Kf","a0t4e"], "a0t4e", "parcelRequireb734", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["5j6Kf","a0t4e"], "a0t4e", "parcelRequireb734", {})
 
 //# sourceMappingURL=book-shop.31b563d9.js.map
