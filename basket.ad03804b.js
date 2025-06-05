@@ -674,10 +674,9 @@ var _getAccountApiJs = require("./basket-JS/service/getAccountApi.js");
 var _showMoreSupportJs = require("./index-JS/operation/showMoreSupport.js");
 var _buildPaginationListJs = require("./basket-JS/createHtml/buildPaginationList.js");
 var _logOutJs = require("./index-JS/operation/logOut.js");
-var _phoneModalJs = require("./index-JS/modal/phoneModal.js");
-var _cxaJs = require("./index-JS/cxa.js");
+var _phoneModalJs = require("./index-JS/modal/phoneModal.js"); // import "./index-JS/cxa.js";
 
-},{"./basket-JS/app.js":"4B7eR","./basket-JS/createHtml/buildHeader.js":"aGUoO","./basket-JS/createHtml/buildShopingList.js":"1Fo69","./basket-JS/service/getAccountApi.js":"glLNx","./index-JS/operation/showMoreSupport.js":"uarTt","./basket-JS/createHtml/buildPaginationList.js":"6LkPE","./index-JS/operation/logOut.js":"20Js2","./index-JS/modal/phoneModal.js":"lY3I2","./index-JS/cxa.js":"4ib6C"}],"4B7eR":[function(require,module,exports,__globalThis) {
+},{"./basket-JS/app.js":"4B7eR","./basket-JS/createHtml/buildHeader.js":"aGUoO","./basket-JS/createHtml/buildShopingList.js":"1Fo69","./basket-JS/service/getAccountApi.js":"glLNx","./index-JS/operation/showMoreSupport.js":"uarTt","./basket-JS/createHtml/buildPaginationList.js":"6LkPE","./index-JS/operation/logOut.js":"20Js2","./index-JS/modal/phoneModal.js":"lY3I2"}],"4B7eR":[function(require,module,exports,__globalThis) {
 var _buildHeaderJs = require("./createHtml/buildHeader.js");
 var _buildShopingListJs = require("./createHtml/buildShopingList.js");
 var _getAccountApiJs = require("./service/getAccountApi.js");
@@ -942,10 +941,12 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "inicalization", ()=>inicalization);
 parcelHelpers.export(exports, "closeModal", ()=>closeModal);
-const noLoginbacdrop = document.querySelector(".phone-bacdrop");
-const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
-const name = document.querySelector(".phoneLogin__account-name");
-const header = document.querySelector(".header");
+document.addEventListener("DOMContentLoaded", ()=>{
+    const noLoginbacdrop1 = document.querySelector(".phone-bacdrop");
+    const loginbacdrop1 = document.querySelector(".phoneLogin-bacdrop");
+    const name1 = document.querySelector(".phoneLogin__account-name");
+    const header = document.querySelector(".header");
+});
 let openButton;
 let closeButton;
 const inicalization = function() {
@@ -1011,9 +1012,6 @@ function logOut() {
     localStorage.clear();
     location.reload();
 }
-
-},{}],"4ib6C":[function(require,module,exports,__globalThis) {
-console.log(1);
 
 },{}]},["ePCUa","2dm5W"], "2dm5W", "parcelRequireb734", {})
 
