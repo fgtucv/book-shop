@@ -4,7 +4,7 @@ import { createBookList } from "./createHtml/createBookList.js";
 import { getBookApi } from "./service/getBookapi.js";
 import { closeModal } from "./modal/phoneModal.js";
 import { buildHeader } from "./createHtml/buildHeader.js";
-import { inicalization } from "./modal/phoneModal.js";
+// import { inicalization } from "./modal/phoneModal.js";
 
 const openButtonLoginInPhone = document.querySelector(".phone__open-button");
 
@@ -30,4 +30,4 @@ openButtonLoginInPhone.addEventListener("click", () => {
     closeModal()
 });
 
-inicalization();
+// inicalization();

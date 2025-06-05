@@ -1,7 +1,7 @@
 import { postAccount } from "../service/postAccount";
 import { getAccount } from "../service/getAccountApi";
 import { buildHeader } from "../createHtml/buildHeader";
-import { inicalization } from "../modal/phoneModal";
+// import { inicalization } from "../modal/phoneModal";
 
 const closeButton = document.querySelector(".login-modal__close-button");
 const openButtonInPhone = document.querySelector(".phone__open-button");
@@ -84,4 +84,4 @@ export function submitInfo(event) {
     };
 };
 
-inicalization()
+// inicalization()
