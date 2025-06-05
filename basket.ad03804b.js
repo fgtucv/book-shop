@@ -977,8 +977,10 @@ function closeModal() {
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"uarTt":[function(require,module,exports,__globalThis) {
-const fonds = document.querySelectorAll(".support__item");
-const showeButton = document.querySelector(".support__scroll-button");
+document.addEventListener("DOMContentLoaded", ()=>{
+    const fonds1 = document.querySelectorAll(".support__item");
+    const showeButton1 = document.querySelector(".support__scroll-button");
+});
 showeButton.addEventListener("click", showeMoreSupports);
 function showeMoreSupports() {
     let count = 0;
