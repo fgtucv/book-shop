@@ -50,7 +50,7 @@ span, h1, h2, h3 {
   padding: 0;
 }
 
-@media screen and (width <= 1440px) {
+@media screen and (width <= 1079px) {
   .container {
     width: 704px;
   }
@@ -584,11 +584,25 @@ button {
   position: relative;
 }
 
+@media screen and (width <= 767px) {
+  .shoping-list__item {
+    padding: 14px;
+  }
+}
+
 .shoping-list__img {
   border-radius: 8px;
   width: 116px;
   height: 165px;
   margin-right: 24px;
+}
+
+@media screen and (width <= 767px) {
+  .shoping-list__img {
+    width: 100px;
+    height: 142px;
+    margin-right: 14px;
+  }
 }
 
 .shoping-list__info-title {
@@ -601,6 +615,16 @@ button {
   line-height: 18px;
 }
 
+@media screen and (width <= 767px) {
+  .shoping-list__info-title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 144px;
+    margin-bottom: 4px;
+    overflow: hidden;
+  }
+}
+
 .shoping-list__info-type {
   color: #b4afaf;
   letter-spacing: .36px;
@@ -610,19 +634,41 @@ button {
   line-height: 14px;
 }
 
+@media screen and (width <= 767px) {
+  .shoping-list__info-type {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 165px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+}
+
 .shoping-list__info-text {
   color: #111;
   letter-spacing: -.56px;
-  max-width: 808px;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  max-width: 300px;
   margin-bottom: 48px;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+  display: -webkit-box;
+  overflow: hidden;
 }
 
 @media screen and (width <= 1079px) {
   .shoping-list__info-text {
     max-width: 508px;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .shoping-list__info-text {
+    max-width: 193px;
+    margin-bottom: 16px;
   }
 }
 
@@ -649,11 +695,28 @@ button {
   right: 24px;
 }
 
+@media screen and (width <= 767px) {
+  .shoping-list__delet-button {
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    top: 14px;
+    right: 14px;
+  }
+}
+
 .shoping-list__delet-icon {
   fill: #0000;
   stroke: #fff;
   width: 18px;
   height: 18px;
+}
+
+@media screen and (width <= 767px) {
+  .shoping-list__delet-icon {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .shoping-list__amazon-icon {
@@ -664,12 +727,30 @@ button {
   right: 68px;
 }
 
+@media screen and (width <= 767px) {
+  .shoping-list__amazon-icon {
+    width: 32px;
+    height: 11px;
+    bottom: 14px;
+    right: 38px;
+  }
+}
+
 .addModal__apple-books-icon {
   width: 28px;
   height: 28px;
   position: absolute;
   bottom: 24px;
   right: 24px;
+}
+
+@media screen and (width <= 767px) {
+  .addModal__apple-books-icon {
+    width: 16px;
+    height: 16px;
+    bottom: 14px;
+    right: 14px;
+  }
 }
 
 .shoping-list__pagination-div {
@@ -702,6 +783,14 @@ button {
   }
 }
 
+@media screen and (width <= 767px) {
+  .shoping-list__pagination-back-too {
+    width: 38px;
+    height: 38px;
+    margin-right: 5px;
+  }
+}
+
 .shoping-list__pagination-back {
   color: #fff;
   background-color: #000;
@@ -719,6 +808,14 @@ button {
   }
 }
 
+@media screen and (width <= 767px) {
+  .shoping-list__pagination-back {
+    width: 38px;
+    height: 38px;
+    margin-right: 14px;
+  }
+}
+
 .shoping-list__pagination-list {
   justify-content: center;
   gap: 24px;
@@ -731,6 +828,12 @@ button {
   }
 }
 
+@media screen and (width <= 767px) {
+  .shoping-list__pagination-list {
+    gap: 8px;
+  }
+}
+
 .shoping-list__pagination-number {
   color: #000;
   background-color: #0000;
@@ -739,6 +842,13 @@ button {
   flex-shrink: 0;
   width: 44px;
   height: 44px;
+}
+
+@media screen and (width <= 767px) {
+  .shoping-list__pagination-number {
+    width: 38px;
+    height: 38px;
+  }
 }
 
 .active-number {
@@ -762,6 +872,14 @@ button {
   }
 }
 
+@media screen and (width <= 767px) {
+  .shoping-list__pagination-forward {
+    width: 38px;
+    height: 38px;
+    margin-left: 14px;
+  }
+}
+
 .shoping-list__pagination-forward-too {
   background-color: #eac645;
   border: 1px solid #000;
@@ -776,5 +894,120 @@ button {
   .shoping-list__pagination-forward-too {
     margin-left: 8px;
   }
+}
+
+@media screen and (width <= 767px) {
+  .shoping-list__pagination-forward-too {
+    width: 38px;
+    height: 38px;
+    margin-left: 5px;
+  }
+}
+
+.phoneLogin-bacdrop {
+  z-index: 999;
+  background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8 18.03%, #fff 100%);
+  padding-top: 84px;
+  padding-left: 20px;
+  position: fixed;
+  inset: 0;
+}
+
+.phoneLogin__account-div {
+  align-items: center;
+  display: flex;
+}
+
+.phoneLogin__account-avatar-div {
+  background-color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 9px;
+  display: flex;
+}
+
+.phoneLogin__account-avatar {
+  fill: #4f2ee8;
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+}
+
+.phoneLogin__account-name {
+  color: #fff;
+  letter-spacing: -.44px;
+  margin-left: 9px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.phoneLogin__nav-list {
+  width: fit-content;
+  margin-top: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.phoneLogin__nav-item {
+  align-items: center;
+  display: flex;
+}
+
+.phoneLogin__nav-item:first-child {
+  margin-bottom: 16px;
+}
+
+.active-nav-item {
+  background: #eac645;
+  border-radius: 36px;
+  width: fit-content;
+  padding: 8px 16px;
+}
+
+.phoneLogin__nav-link {
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.active-nav-link {
+  color: #111;
+  font-weight: 700;
+}
+
+.phoneLogin__nav-icon {
+  stroke: #fff;
+  fill: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+.phoneLogin__exit-button {
+  color: #000;
+  letter-spacing: -.56px;
+  white-space: nowrap;
+  background-color: #fff;
+  border: 1.5px solid #111;
+  border-radius: 18px;
+  align-items: center;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+}
+
+.phoneLogin__exit-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
 }
 /*# sourceMappingURL=basket.787081e8.css.map */

@@ -1,4 +1,5 @@
 const logOutButton = document.querySelector(".header__exit-button");
+const logOutButtonInPhone = document.querySelector(".phoneLogin__exit-button");
 const openAndCloseButton = document.querySelector(".header__account-button");
 
 if (JSON.parse(localStorage.getItem("status")) === "login") {
@@ -17,6 +18,7 @@ function howOrHideButton() {
 
 if (JSON.parse(localStorage.getItem("status")) === "login") {
     logOutButton.addEventListener("click", logOut);
+    logOutButtonInPhone.addEventListener("click", logOut);
 } else {
     return;
 }

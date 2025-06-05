@@ -1,27 +1,45 @@
-const openButton = document.querySelector(".header__menu-button");
-const closeButton = document.querySelector(".phone__close-button");
-const bacdrop = document.querySelector(".phone-bacdrop");
+const noLoginbacdrop = document.querySelector(".phone-bacdrop");
+const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
+const name = document.querySelector(".phoneLogin__account-name");
 const header = document.querySelector(".header");
 
-header.addEventListener("click", (event) => {
-    if (event.target.parentNode.parentNode.classList.contains("header__menu-button") || event.target.parentNode.classList.contains("header__menu-button") || event.target.classList.contains("header__menu-button")) {
-        openModal()
-        closeButton.style.display = "flex";
-    } else {
-        return
-    }
-});
+let openButton;
+let closeButton;
 
-closeButton.addEventListener("click", closeModal);
+export const inicalization = function () {
+    openButton = document.querySelector(".header__menu-button");
+    closeButton = document.querySelector(".phone__close-button");
+
+    openButton.addEventListener("click", openModal)
+    closeButton.addEventListener("click", closeModal);
+}
+
+// header.addEventListener("click", (event) => {
+//     openButton = document.querySelector(".header__menu-button");
+//     closeButton = document.querySelector(".phone__close-button");
+
+//     openButton.addEventListener("click", openModal)
+//     closeButton.addEventListener("click", closeModal);
+// });
 
 function openModal() {
-    bacdrop.classList.remove("is-hidden");
+    if (JSON.parse(localStorage.getItem("status")) === "no login") {
+        noLoginbacdrop.classList.remove("is-hidden");
+    } else if (JSON.parse(localStorage.getItem("status")) === "login") {
+        loginbacdrop.classList.remove("is-hidden");
+        name.textContent = JSON.parse(localStorage.getItem("account")).name;
+    }
+
     openButton.style.display = "none";
     closeButton.style.display = "flex";
 }
 
 export function closeModal() {
-    bacdrop.classList.add("is-hidden");
+    if (JSON.parse(localStorage.getItem("status")) === "no login") {
+        noLoginbacdrop.classList.add("is-hidden");
+    } else if (JSON.parse(localStorage.getItem("status")) === "login") {
+        loginbacdrop.classList.add("is-hidden");
+    }
     openButton.style.display = "flex";
     closeButton.style.display = "none";
 }

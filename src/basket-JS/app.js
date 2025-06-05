@@ -2,8 +2,10 @@ import { buildHeader } from "./createHtml/buildHeader.js";
 import { buildShopingList } from "./createHtml/buildShopingList.js";
 import { getAccountApi } from "./service/getAccountApi.js";
 import { buildPaginationList } from "../basket-JS/createHtml/buildPaginationList.js";
+import { inicalization } from "../index-JS/modal/phoneModal.js";
 
 const paginationDiv = document.querySelector(".shoping-list__pagination-div");
+const body = document.querySelector("body");
 
 let page1 = 1;
 let page2 = 4;
@@ -21,7 +23,8 @@ function pagination(event) {
     const element = event.target;
     const active = document.querySelector(".active-number");
 
-    if (element.classList.contains("shoping-list__pagination-number")) {
+    if (element.classList.contains("shoping-list__pagination-number") && element.id !== "buffer") {
+
         page2 = Number(element.textContent) * 3;
         page1 = page2 - 3
 
@@ -31,11 +34,18 @@ function pagination(event) {
 
         active.classList.remove("active-number");
         element.classList.add("active-number");
-    } else if (element.classList.contains("shoping-list__pagination-back-too")) {
+    } else if (element.classList.contains("shoping-list__pagination-back-too") && page1 >= 3) {
+
         getAccountApi(JSON.parse(localStorage.getItem("account")).id).then((data) => {
+            const backActive = document.getElementById(`0button`)
+            
+            backActive.classList.add("active-number");
+            active.classList.remove("active-number");
+
             buildShopingList(data[0].cards.slice(0, 3));
         });
     } else if (element.classList.contains("shoping-list__pagination-back") && page1 >= 3) {
+
         const backPage = document.getElementById(`${Number.parseInt(active.id) - 1}button`);
 
         page1 = page1 - 3;
@@ -45,9 +55,20 @@ function pagination(event) {
             buildShopingList(data[0].cards.slice(page1, page2));
         });
 
+        if(body.offsetWidth < 768 && Number.parseInt(active.id) - 2 >= 0){
+            console.log(0)
+            backPage.parentNode.classList.remove("is-hidden");
+
+            const noHideElement = document.getElementById(`${Number.parseInt(active.id) - 2}button`);
+
+            noHideElement.parentNode.classList.remove("is-hidden");
+            active.parentNode.classList.add("is-hidden");
+        }
+
         active.classList.remove("active-number");
         backPage.classList.add("active-number");
-    } else if (element.classList.contains("shoping-list__pagination-forward")) {
+    } else if (element.classList.contains("shoping-list__pagination-forward") && document.getElementById(`${Number.parseInt(active.id) + 1}button`) !== null) {
+
         const nextPage = document.getElementById(`${Number.parseInt(active.id) + 1}button`);
 
         page1 = page1 + 3;
@@ -57,18 +78,33 @@ function pagination(event) {
             buildShopingList(data[0].cards.slice(page1, page2));
         });
 
+        if(body.offsetWidth < 768 && Number.parseInt(active.id) - 1 >= 0){
+            nextPage.parentNode.classList.remove("is-hidden");
+
+            const hideElement = document.getElementById(`${Number.parseInt(active.id) - 1}button`);
+
+            hideElement.parentNode.classList.add("is-hidden");
+        }
+
         active.classList.remove("active-number");
         nextPage.classList.add("active-number");
-    } else if (element.classList.contains("shoping-list__pagination-forward-too")) {
+    } else if (element.classList.contains("shoping-list__pagination-forward-too") && document.getElementById(`${Number.parseInt(active.id) + 1}button`) !== null) {
+
         page1 = page1 + 3;
         page2 = page2 + 3;
 
         getAccountApi(JSON.parse(localStorage.getItem("account")).id).then((data) => {
-
             page1 =  Number.parseInt(data[0].cards.length / 3 + 1) * 3 - 3;
             page2 = Number.parseInt(data[0].cards.length / 3 + 1) * 3;
-            console.log(page1, page2)
+
+            const nextActive = document.getElementById(`${Number.parseInt(data[0].cards.length / 3)}button`)
+            
+            nextActive.classList.add("active-number");
+            active.classList.remove("active-number");
+
             buildShopingList(data[0].cards.slice(page1, page2));
         });
     }
 };
+
+inicalization();

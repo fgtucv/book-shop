@@ -4,6 +4,7 @@ import { createBookList } from "./createHtml/createBookList.js";
 import { getBookApi } from "./service/getBookapi.js";
 import { closeModal } from "./modal/phoneModal.js";
 import { buildHeader } from "./createHtml/buildHeader.js";
+import { inicalization } from "./modal/phoneModal.js";
 
 const openButtonLoginInPhone = document.querySelector(".phone__open-button");
 
@@ -28,3 +29,5 @@ getBookApi('https://books-backend.p.goit.global/books/top-books').then((data) =>
 openButtonLoginInPhone.addEventListener("click", () => {
     closeModal()
 });
+
+inicalization();

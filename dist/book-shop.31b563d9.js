@@ -706,6 +706,7 @@ function getCategory() {
 openButtonLoginInPhone.addEventListener("click", ()=>{
     (0, _phoneModalJs.closeModal)();
 });
+(0, _phoneModalJs.inicalization)();
 
 },{"./service/getCategoryApi.js":"iA63L","./createHtml/createCetegoryList.js":"hbtQp","./createHtml/createBookList.js":"1TOVD","./service/getBookapi.js":"eOevv","./modal/phoneModal.js":"lY3I2","./createHtml/buildHeader.js":"kRKgY"}],"iA63L":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -838,25 +839,38 @@ const getBookApi = async (api)=>{
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"lY3I2":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "inicalization", ()=>inicalization);
 parcelHelpers.export(exports, "closeModal", ()=>closeModal);
-const openButton = document.querySelector(".header__menu-button");
-const closeButton = document.querySelector(".phone__close-button");
-const bacdrop = document.querySelector(".phone-bacdrop");
+const noLoginbacdrop = document.querySelector(".phone-bacdrop");
+const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
+const name = document.querySelector(".phoneLogin__account-name");
 const header = document.querySelector(".header");
-header.addEventListener("click", (event)=>{
-    if (event.target.parentNode.parentNode.classList.contains("header__menu-button") || event.target.parentNode.classList.contains("header__menu-button") || event.target.classList.contains("header__menu-button")) {
-        openModal();
-        closeButton.style.display = "flex";
-    } else return;
-});
-closeButton.addEventListener("click", closeModal);
+let openButton;
+let closeButton;
+const inicalization = function() {
+    openButton = document.querySelector(".header__menu-button");
+    closeButton = document.querySelector(".phone__close-button");
+    openButton.addEventListener("click", openModal);
+    closeButton.addEventListener("click", closeModal);
+};
+// header.addEventListener("click", (event) => {
+//     openButton = document.querySelector(".header__menu-button");
+//     closeButton = document.querySelector(".phone__close-button");
+//     openButton.addEventListener("click", openModal)
+//     closeButton.addEventListener("click", closeModal);
+// });
 function openModal() {
-    bacdrop.classList.remove("is-hidden");
+    if (JSON.parse(localStorage.getItem("status")) === "no login") noLoginbacdrop.classList.remove("is-hidden");
+    else if (JSON.parse(localStorage.getItem("status")) === "login") {
+        loginbacdrop.classList.remove("is-hidden");
+        name.textContent = JSON.parse(localStorage.getItem("account")).name;
+    }
     openButton.style.display = "none";
     closeButton.style.display = "flex";
 }
 function closeModal() {
-    bacdrop.classList.add("is-hidden");
+    if (JSON.parse(localStorage.getItem("status")) === "no login") noLoginbacdrop.classList.add("is-hidden");
+    else if (JSON.parse(localStorage.getItem("status")) === "login") loginbacdrop.classList.add("is-hidden");
     openButton.style.display = "flex";
     closeButton.style.display = "none";
 }
@@ -996,6 +1010,7 @@ parcelHelpers.export(exports, "submitInfo", ()=>submitInfo);
 var _postAccount = require("../service/postAccount");
 var _getAccountApi = require("../service/getAccountApi");
 var _buildHeader = require("../createHtml/buildHeader");
+var _phoneModal = require("../modal/phoneModal");
 const closeButton = document.querySelector(".login-modal__close-button");
 const openButtonInPhone = document.querySelector(".phone__open-button");
 const openButtonInDesktop = document.querySelector(".header__open-button");
@@ -1056,8 +1071,9 @@ function submitInfo(event) {
         } else return;
     });
 }
+(0, _phoneModal.inicalization)();
 
-},{"../service/postAccount":"eM897","../service/getAccountApi":"gsdH5","../createHtml/buildHeader":"kRKgY","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"eM897":[function(require,module,exports,__globalThis) {
+},{"../service/postAccount":"eM897","../service/getAccountApi":"gsdH5","../createHtml/buildHeader":"kRKgY","../modal/phoneModal":"lY3I2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"eM897":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postAccount", ()=>postAccount);
@@ -1095,6 +1111,7 @@ const getAccount = async (name, email)=>{
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"20Js2":[function(require,module,exports,__globalThis) {
 const logOutButton = document.querySelector(".header__exit-button");
+const logOutButtonInPhone = document.querySelector(".phoneLogin__exit-button");
 const openAndCloseButton = document.querySelector(".header__account-button");
 if (JSON.parse(localStorage.getItem("status")) === "login") openAndCloseButton.addEventListener("click", howOrHideButton);
 else return;
@@ -1102,8 +1119,10 @@ function howOrHideButton() {
     if (logOutButton.classList.contains("is-hidden")) logOutButton.classList.remove("is-hidden");
     else if (!logOutButton.classList.contains("is-hidden")) logOutButton.classList.add("is-hidden");
 }
-if (JSON.parse(localStorage.getItem("status")) === "login") logOutButton.addEventListener("click", logOut);
-else return;
+if (JSON.parse(localStorage.getItem("status")) === "login") {
+    logOutButton.addEventListener("click", logOut);
+    logOutButtonInPhone.addEventListener("click", logOut);
+} else return;
 function logOut() {
     localStorage.clear();
     location.reload();
