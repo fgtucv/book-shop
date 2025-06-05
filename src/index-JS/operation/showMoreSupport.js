@@ -1,5 +1,7 @@
-const fonds = document.querySelectorAll(".support__item");
-const showeButton = document.querySelector(".support__scroll-button");
+document.addEventListener("DOMContentLoaded", () => {
+    const fonds = document.querySelectorAll(".support__item");
+    const showeButton = document.querySelector(".support__scroll-button");
+})
 
 showeButton.addEventListener("click", showeMoreSupports);
 

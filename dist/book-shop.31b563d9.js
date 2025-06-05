@@ -692,7 +692,6 @@ var _createBookListJs = require("./createHtml/createBookList.js");
 var _getBookapiJs = require("./service/getBookapi.js");
 var _phoneModalJs = require("./modal/phoneModal.js");
 var _buildHeaderJs = require("./createHtml/buildHeader.js");
-// import { inicalization } from "./modal/phoneModal.js";
 const openButtonLoginInPhone = document.querySelector(".phone__open-button");
 if (JSON.parse(localStorage.getItem("status")) === "login") (0, _buildHeaderJs.buildHeader)(JSON.parse(localStorage.getItem("account")));
 else localStorage.setItem("status", JSON.stringify("no login"));
@@ -707,7 +706,8 @@ function getCategory() {
 });
 openButtonLoginInPhone.addEventListener("click", ()=>{
     (0, _phoneModalJs.closeModal)();
-}); // inicalization();
+});
+(0, _phoneModalJs.inicalization)();
 
 },{"./service/getCategoryApi.js":"iA63L","./createHtml/createCetegoryList.js":"hbtQp","./createHtml/createBookList.js":"1TOVD","./service/getBookapi.js":"eOevv","./modal/phoneModal.js":"lY3I2","./createHtml/buildHeader.js":"kRKgY"}],"iA63L":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -989,8 +989,10 @@ function changeCategory(event) {
 }
 
 },{"../service/getBookapi":"eOevv","../createHtml/createBookList":"1TOVD"}],"uarTt":[function(require,module,exports,__globalThis) {
-const fonds = document.querySelectorAll(".support__item");
-const showeButton = document.querySelector(".support__scroll-button");
+document.addEventListener("DOMContentLoaded", ()=>{
+    const fonds1 = document.querySelectorAll(".support__item");
+    const showeButton1 = document.querySelector(".support__scroll-button");
+});
 showeButton.addEventListener("click", showeMoreSupports);
 function showeMoreSupports() {
     let count = 0;
@@ -1011,7 +1013,7 @@ parcelHelpers.export(exports, "submitInfo", ()=>submitInfo);
 var _postAccount = require("../service/postAccount");
 var _getAccountApi = require("../service/getAccountApi");
 var _buildHeader = require("../createHtml/buildHeader");
-// import { inicalization } from "../modal/phoneModal";
+var _phoneModal = require("../modal/phoneModal");
 const closeButton = document.querySelector(".login-modal__close-button");
 const openButtonInPhone = document.querySelector(".phone__open-button");
 const openButtonInDesktop = document.querySelector(".header__open-button");
@@ -1072,9 +1074,9 @@ function submitInfo(event) {
         } else return;
     });
 }
- // inicalization()
+(0, _phoneModal.inicalization)();
 
-},{"../service/postAccount":"eM897","../service/getAccountApi":"gsdH5","../createHtml/buildHeader":"kRKgY","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"eM897":[function(require,module,exports,__globalThis) {
+},{"../service/postAccount":"eM897","../service/getAccountApi":"gsdH5","../createHtml/buildHeader":"kRKgY","../modal/phoneModal":"lY3I2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"eM897":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postAccount", ()=>postAccount);
