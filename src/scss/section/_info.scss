@@ -159,10 +159,10 @@
     border-radius: 50%;
     border: none;
     background-color: #FFFFFF;
-    position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translate(-50%, 0%) rotate(180deg);
+    // position: absolute;
+    // bottom: 24px;
+    // left: 50%;
+    // transform: translate(-50%, 0%) rotate(180deg);
     transition: background-color 500ms linear 250ms, transform 300ms linear;
 }
 
