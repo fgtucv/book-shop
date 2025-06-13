@@ -695,6 +695,9 @@ paginationDiv.addEventListener("click", pagination);
 function pagination(event) {
     const element = event.target;
     const active = document.querySelector(".active-number");
+    const buffer = document.getElementById("buffer");
+    const list = document.querySelector(".shoping-list__pagination-list");
+    list.lastChild.remove();
     if (element.classList.contains("shoping-list__pagination-number") && element.id !== "buffer") {
         page2 = Number(element.textContent) * 3;
         page1 = page2 - 3;
@@ -703,13 +706,15 @@ function pagination(event) {
         });
         active.classList.remove("active-number");
         element.classList.add("active-number");
-    } else if (element.classList.contains("shoping-list__pagination-back-too") && page1 >= 3) (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
-        const backActive = document.getElementById(`0button`);
-        backActive.classList.add("active-number");
-        active.classList.remove("active-number");
-        (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(0, 3));
-    });
-    else if (element.classList.contains("shoping-list__pagination-back") && page1 >= 3) {
+    } else if (element.classList.contains("shoping-list__pagination-back-too") && page1 >= 3) {
+        (0, _getAccountApiJs.getAccountApi)(JSON.parse(localStorage.getItem("account")).id).then((data)=>{
+            const backActive = document.getElementById(`0button`);
+            backActive.classList.add("active-number");
+            active.classList.remove("active-number");
+            (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(0, 3));
+        });
+        list.appendChild(buffer);
+    } else if (element.classList.contains("shoping-list__pagination-back") && page1 >= 3) {
         const backPage = document.getElementById(`${Number.parseInt(active.id) - 1}button`);
         page1 = page1 - 3;
         page2 = page2 - 3;
@@ -717,14 +722,15 @@ function pagination(event) {
             (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1, page2));
         });
         if (body.offsetWidth < 768 && Number.parseInt(active.id) - 2 >= 0) {
-            console.log(0);
             backPage.parentNode.classList.remove("is-hidden");
             const noHideElement = document.getElementById(`${Number.parseInt(active.id) - 2}button`);
             noHideElement.parentNode.classList.remove("is-hidden");
             active.parentNode.classList.add("is-hidden");
         }
+        buffer.classList.remove("is-hidden");
         active.classList.remove("active-number");
         backPage.classList.add("active-number");
+        list.appendChild(buffer);
     } else if (element.classList.contains("shoping-list__pagination-forward") && document.getElementById(`${Number.parseInt(active.id) + 1}button`) !== null) {
         const nextPage = document.getElementById(`${Number.parseInt(active.id) + 1}button`);
         page1 = page1 + 3;
@@ -746,10 +752,20 @@ function pagination(event) {
             page1 = Number.parseInt(data[0].cards.length / 3 + 1) * 3 - 3;
             page2 = Number.parseInt(data[0].cards.length / 3 + 1) * 3;
             const nextActive = document.getElementById(`${Number.parseInt(data[0].cards.length / 3)}button`);
+            const beforActive = document.getElementById(`${Number.parseInt(data[0].cards.length / 3 - 1)}button`);
+            const secondElement = document.getElementById("1button");
             nextActive.classList.add("active-number");
             active.classList.remove("active-number");
+            nextActive.parentNode.classList.remove("is-hidden");
+            active.parentNode.classList.add("is-hidden");
+            beforActive.parentNode.classList.remove("is-hidden");
+            secondElement.parentNode.classList.add("is-hidden");
+            // console.log(nextActive)
+            // console.log(beforActive)
+            // console.log(active)            
             (0, _buildShopingListJs.buildShopingList)(data[0].cards.slice(page1, page2));
         });
+        list.insertBefore(buffer, list.firstChild);
     }
 }
 (0, _phoneModalJs.inicalization)();
@@ -941,26 +957,19 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "inicalization", ()=>inicalization);
 parcelHelpers.export(exports, "closeModal", ()=>closeModal);
-document.addEventListener("DOMContentLoaded", ()=>{
-    const noLoginbacdrop1 = document.querySelector(".phone-bacdrop");
-    const loginbacdrop1 = document.querySelector(".phoneLogin-bacdrop");
-    const name1 = document.querySelector(".phoneLogin__account-name");
-    const header = document.querySelector(".header");
-});
+const noLoginbacdrop = document.querySelector(".phone-bacdrop");
+const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
+const name = document.querySelector(".phoneLogin__account-name");
 let openButton;
 let closeButton;
 const inicalization = function() {
     openButton = document.querySelector(".header__menu-button");
     closeButton = document.querySelector(".phone__close-button");
-    openButton.addEventListener("click", openModal);
-    closeButton.addEventListener("click", closeModal);
+    if (openButton !== null || closeButton !== null) {
+        openButton.addEventListener("click", openModal);
+        closeButton.addEventListener("click", closeModal);
+    }
 };
-// header.addEventListener("click", (event) => {
-//     openButton = document.querySelector(".header__menu-button");
-//     closeButton = document.querySelector(".phone__close-button");
-//     openButton.addEventListener("click", openModal)
-//     closeButton.addEventListener("click", closeModal);
-// });
 function openModal() {
     if (JSON.parse(localStorage.getItem("status")) === "no login") noLoginbacdrop.classList.remove("is-hidden");
     else if (JSON.parse(localStorage.getItem("status")) === "login") {
@@ -978,10 +987,8 @@ function closeModal() {
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"uarTt":[function(require,module,exports,__globalThis) {
-document.addEventListener("DOMContentLoaded", ()=>{
-    const fonds1 = document.querySelectorAll(".support__item");
-    const showeButton1 = document.querySelector(".support__scroll-button");
-});
+const fonds = document.querySelectorAll(".support__item");
+const showeButton = document.querySelector(".support__scroll-button");
 showeButton.addEventListener("click", showeMoreSupports);
 function showeMoreSupports() {
     let count = 0;

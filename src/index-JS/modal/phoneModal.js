@@ -1,10 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const noLoginbacdrop = document.querySelector(".phone-bacdrop");
-    const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
-    const name = document.querySelector(".phoneLogin__account-name");
-    const header = document.querySelector(".header");
-})
-
+const noLoginbacdrop = document.querySelector(".phone-bacdrop");
+const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
+const name = document.querySelector(".phoneLogin__account-name");
 
 let openButton;
 let closeButton;
@@ -13,17 +9,11 @@ export const inicalization = function () {
     openButton = document.querySelector(".header__menu-button");
     closeButton = document.querySelector(".phone__close-button");
 
-    openButton.addEventListener("click", openModal)
-    closeButton.addEventListener("click", closeModal);
+    if (openButton !== null || closeButton !== null) {
+        openButton.addEventListener("click", openModal)
+        closeButton.addEventListener("click", closeModal);
+    }
 }
-
-// header.addEventListener("click", (event) => {
-//     openButton = document.querySelector(".header__menu-button");
-//     closeButton = document.querySelector(".phone__close-button");
-
-//     openButton.addEventListener("click", openModal)
-//     closeButton.addEventListener("click", closeModal);
-// });
 
 function openModal() {
     if (JSON.parse(localStorage.getItem("status")) === "no login") {

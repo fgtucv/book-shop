@@ -25,7 +25,7 @@ let cardType;
 function openAddToShopingListModal(event) {
     const element = event.target.parentNode
 
-    if(element.classList.contains("magazine__item")){
+    if(element.classList.contains("magazine__item") && element.id !== ""){
         img.src = element.getAttribute("data-img");
         title.textContent = element.getAttribute("data-title");
         text.textContent = element.getAttribute("data-description");
