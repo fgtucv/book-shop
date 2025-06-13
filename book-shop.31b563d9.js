@@ -841,26 +841,19 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "inicalization", ()=>inicalization);
 parcelHelpers.export(exports, "closeModal", ()=>closeModal);
-document.addEventListener("DOMContentLoaded", ()=>{
-    const noLoginbacdrop1 = document.querySelector(".phone-bacdrop");
-    const loginbacdrop1 = document.querySelector(".phoneLogin-bacdrop");
-    const name1 = document.querySelector(".phoneLogin__account-name");
-    const header = document.querySelector(".header");
-});
+const noLoginbacdrop = document.querySelector(".phone-bacdrop");
+const loginbacdrop = document.querySelector(".phoneLogin-bacdrop");
+const name = document.querySelector(".phoneLogin__account-name");
 let openButton;
 let closeButton;
 const inicalization = function() {
     openButton = document.querySelector(".header__menu-button");
     closeButton = document.querySelector(".phone__close-button");
-    openButton.addEventListener("click", openModal);
-    closeButton.addEventListener("click", closeModal);
+    if (openButton !== null || closeButton !== null) {
+        openButton.addEventListener("click", openModal);
+        closeButton.addEventListener("click", closeModal);
+    }
 };
-// header.addEventListener("click", (event) => {
-//     openButton = document.querySelector(".header__menu-button");
-//     closeButton = document.querySelector(".phone__close-button");
-//     openButton.addEventListener("click", openModal)
-//     closeButton.addEventListener("click", closeModal);
-// });
 function openModal() {
     if (JSON.parse(localStorage.getItem("status")) === "no login") noLoginbacdrop.classList.remove("is-hidden");
     else if (JSON.parse(localStorage.getItem("status")) === "login") {
@@ -990,10 +983,8 @@ function changeCategory(event) {
 }
 
 },{"../service/getBookapi":"eOevv","../createHtml/createBookList":"1TOVD"}],"uarTt":[function(require,module,exports,__globalThis) {
-document.addEventListener("DOMContentLoaded", ()=>{
-    const fonds1 = document.querySelectorAll(".support__item");
-    const showeButton1 = document.querySelector(".support__scroll-button");
-});
+const fonds = document.querySelectorAll(".support__item");
+const showeButton = document.querySelector(".support__scroll-button");
 showeButton.addEventListener("click", showeMoreSupports);
 function showeMoreSupports() {
     let count = 0;
@@ -1172,7 +1163,7 @@ let aplleBook;
 let cardType;
 function openAddToShopingListModal(event) {
     const element = event.target.parentNode;
-    if (element.classList.contains("magazine__item")) {
+    if (element.classList.contains("magazine__item") && element.id !== "") {
         img.src = element.getAttribute("data-img");
         title.textContent = element.getAttribute("data-title");
         text.textContent = element.getAttribute("data-description");
