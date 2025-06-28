@@ -1,7 +1,7 @@
 .header {
-    background-color: #ffffff;
+    background-color: #111;
     border-radius: 0px 0px 8px 8px;
-    border: 2px solid #111;
+    border: 2px solid #FFF;
     flex-shrink: 0;
     position: fixed;
     top: 0;
@@ -36,7 +36,7 @@
 }
 
 .header__logo-span {
-    color: #000000;
+    color: #F3F3F3;
     font-size: 18px;
     font-weight: 700;
     line-height: 24px;
@@ -63,12 +63,15 @@
 .header__nav-item {
     align-items: center;
     display: flex;
+    background: #EAC645;
     padding: 8px 16px;
     border-radius: 36px;
 }
 
 .active-nav-item {
-    background: #EAC645;
+    border-radius: 36px;
+    background: none;
+    padding: 8px 16px;
 }
 
 .header__nav-link {
@@ -76,18 +79,19 @@
     text-align: center;
     font-size: 14px;
     font-weight: 500;
-    color: #111111;
+    color: #FFF;
 }
 
 .active-nav-link {
     font-weight: 700;
+    color: #111111;
 }
 
 .header__nav-icon {
     width: 20px;
     height: 20px;
-    // stroke: #111111;
-    fill: #111111;
+    stroke: #ffffff;
+    fill: #ffffff;
 }
 
 .header__switch {
@@ -256,8 +260,8 @@
 }
 
 .header__arrow-icon {
-    width: 20px;
-    height: 20px;
+    width: 13px;
+    height: 10px;
     stroke: #eac645;
 }
 

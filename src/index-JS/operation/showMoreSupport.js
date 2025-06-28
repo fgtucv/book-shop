@@ -1,5 +1,6 @@
 const fonds = document.querySelectorAll(".support__item");
 const showeButton = document.querySelector(".support__scroll-button");
+const showIcon = document.querySelector(".support__scroll-icon");
 
 showeButton.addEventListener("click", showeMoreSupports);
 
@@ -17,8 +18,8 @@ function showeMoreSupports() {
     });
 
     if (fonds[0].classList.contains("no-showe")) {
-        showeButton.style.transform = "translate(-50%, 0%) rotate(0deg)";
+        showIcon.style.transform = "rotate(180deg)";
     } else {
-        showeButton.style.transform = "translate(-50%, 0%) rotate(180deg)";
+        showIcon.style.transform = "rotate(0deg)";
     }
 }

@@ -25,7 +25,7 @@ function pagination(event) {
     const buffer = document.getElementById("buffer");
     const list = document.querySelector(".shoping-list__pagination-list");
 
-    list.lastChild.remove();
+    // list.lastChild.remove();
 
     if (element.classList.contains("shoping-list__pagination-number") && element.id !== "buffer") {
 
@@ -75,7 +75,7 @@ function pagination(event) {
         active.classList.remove("active-number");
         backPage.classList.add("active-number");
 
-        list.appendChild(buffer);
+        // list.appendChild(buffer);
     } else if (element.classList.contains("shoping-list__pagination-forward") && document.getElementById(`${Number.parseInt(active.id) + 1}button`) !== null) {
 
         const nextPage = document.getElementById(`${Number.parseInt(active.id) + 1}button`);

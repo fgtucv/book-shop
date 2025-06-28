@@ -14,3 +14,4 @@ import "./index-JS/service/updateAccount.js";
 import "./index-JS/modal/loginModal.js";
 import "./index-JS/modal/phoneModal.js";
 import "./index-JS/modal/addToShopingListModal.js";
+import "./index-JS/operation/changeTheme.js";
