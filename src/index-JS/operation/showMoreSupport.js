@@ -17,9 +17,9 @@ function showeMoreSupports() {
         count += 1;
     });
 
-    if (fonds[0].classList.contains("no-showe")) {
-        showIcon.style.transform = "rotate(180deg)";
-    } else {
-        showIcon.style.transform = "rotate(0deg)";
-    }
+    // if (fonds[0].classList.contains("no-showe")) {
+    //     showIcon.style.transform = "rotate(180deg)";
+    // } else {
+    //     showIcon.style.transform = "rotate(0deg)";
+    // }
 }
