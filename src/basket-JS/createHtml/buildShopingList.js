@@ -1,11 +1,11 @@
 const sopingList = document.querySelector(".shoping-list__list");
 
 export function buildShopingList(array) {
+
     const html = array.map((obj) => {
         return `
-    <li class="shoping-list__item">
-                        <img src="${obj.imgUrl}"
-                            alt="${obj.text}" class="shoping-list__img">
+    <li class="shoping-list__item" data-id="${obj.id}" data-img="${obj.imgUrl}" data-description="${obj.text}" data-type="${obj.type}" data-author="${obj.authorName}" data-title="${obj.title}" data-amazon="${obj.amazonBuyLink}" data-aplle="${obj.aplleBookBuyLink}">
+                        <img src="${obj.imgUrl}" alt="${obj.text}" class="shoping-list__img">
                         <div class="shoping-list__info-div">
                             <h2 class="shoping-list__info-title">${obj.title}</h2>
                             <h3 class="shoping-list__info-type">${obj.type}</h3>
@@ -13,8 +13,8 @@ export function buildShopingList(array) {
                             <h3 class="shoping-list__info-author">${obj.authorName}</h3>
                         </div>
                         <button type="button" class="shoping-list__delet-button">
-                            <svg class="shoping-list__delet-icon">
-                                <path d="M6.75 2.25H11.25M2.25 4.5H15.75M14.25 4.5L13.724 12.3895C13.6451 13.5732 13.6057 14.165 13.35 14.6138C13.1249 15.0088 12.7854 15.3265 12.3762 15.5248C11.9115 15.75 11.3183 15.75 10.132 15.75H7.86799C6.68168 15.75 6.08852 15.75 5.62375 15.5248C5.21457 15.3265 4.87507 15.0088 4.64999 14.6138C4.39433 14.165 4.35488 13.5732 4.27596 12.3895L3.75 4.5M7.5 7.875V11.625M10.5 7.875V11.625" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg class="shoping-list__delet-icon" viewBox="0 0 32 32">
+                                <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M12 4h8M4 8h24M25.333 8l-0.935 14.026c-0.14 2.104-0.21 3.156-0.665 3.954-0.4 0.702-1.004 1.267-1.731 1.62-0.826 0.4-1.881 0.4-3.99 0.4h-4.025c-2.109 0-3.163 0-3.99-0.4-0.727-0.353-1.331-0.917-1.731-1.62-0.455-0.798-0.525-1.85-0.665-3.954l-0.935-14.026M13.333 14v6.667M18.667 14v6.667"></path>
                             </svg>
                         </button>
                         <a href="${obj.amazonBuyLink}"

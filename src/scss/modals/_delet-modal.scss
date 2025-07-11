@@ -1,4 +1,4 @@
-.addModal-backdrop {
+.deletModal-backdrop {
     position: fixed;
     left: 0;
     right: 0;
@@ -8,7 +8,7 @@
     z-index: 1001;
 }
 
-.addModal {
+.deletModal {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -24,7 +24,7 @@
     flex-wrap: wrap;
 }
 
-.addModal__close-button {
+.deletModal__close-button {
     flex-shrink: 0;
     background: none;
     border: none;
@@ -34,24 +34,25 @@
     transform: translate(25%, 0%);
 }
 
-.addModal__close-icon {
+.deletModal__close-icon {
     width: 28px;
     height: 28px;
+    // fill: #000000;
     stroke: #000000;
 }
 
-.addModal__img {
+.deletModal__img {
     width: 192px;
     height: 281px;
     border-radius: 8px;
     margin-right: 28px;
 }
 
-.addModal__info-div {
+.deletModal__info-div {
     width: 279px;
 }
 
-.addModal__title {
+.deletModal__title {
     color: #111;
     font-size: 24px;
     font-weight: 700;
@@ -60,7 +61,7 @@
     margin-bottom: 8px;
 }
 
-.addModal__name {
+.deletModal__name {
     color: #B4AFAF;
     font-size: 14px;
     font-style: italic;
@@ -70,7 +71,7 @@
     margin-bottom: 20px;
 }
 
-.addModal__text {
+.deletModal__text {
     color: #111;
     font-size: 14px;
     font-weight: 400;
@@ -79,18 +80,18 @@
     margin-bottom: 20px;
 }
 
-.addModal__amazon-logo {
+.deletModal__amazon-logo {
     width: 62px;
 height: 19px;
 margin-right: 20px;
 }
 
-.addModal__apple-books-logo {
+.deletModal__apple-books-logo {
     width: 33px;
     height: 32px;
 }
 
-.addModal__button {
+.deletModal__button {
     border-radius: 40px;
     border: 2px solid #4F2EE8;
     color: #111;
