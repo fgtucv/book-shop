@@ -91,10 +91,11 @@
 
 .support__scroll-icon {
     fill: #4F2EE8;
+    transition: fill 500ms linear 250ms;
+    display: inline-block;
     width: 22px;
     height: 22px;
-    flex-shrink: 0;
-    transition: fill 500ms linear 250ms;
+    stroke-width: 0;
 }
 
 // shoping-list
