@@ -100,7 +100,9 @@
 
 // shoping-list
 
-.shoping-list {}
+.shoping-list {
+    min-width: 996px;
+}
 
 .shoping-list__main-title {
     color: #111;
@@ -416,4 +418,31 @@
         height: 38px;
         margin-left: 5px;
     }
+}
+
+.buffer-div {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 140px;
+    width: 349px;
+}
+
+.buffer-text {
+    max-width: 349px;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.60);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.36px;
+}
+
+.buffer-img {
+    width: 322px;
+    height: 241px;
+    background-image: url("../imeges/buffer.png");
+    background-position: center;
+    background-size: cover;
 }
