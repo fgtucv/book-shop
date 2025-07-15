@@ -1,187 +1,234 @@
-<!DOCTYPE html><html lang=en><meta name=viewport content="width=device-width, initial-scale=1.0"><title>Document</title><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css rel=stylesheet><link href=/book-shop/book-shop.653a507c.css rel=stylesheet><body>
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css" rel="stylesheet">
+    <link href="/book-shop.da533f7e.css" rel="stylesheet">
+</head>
 
-    
+<body>
 
-    <header class=header>
-        <div class=container>
-            <div class=header__logo-div>
-                <svg />
-                
+    <!-- header -->
+
+    <header class="header">
+        <div class="container">
+            <div class="header__logo-div">
+                <!-- <svg> -->
+                    <!-- class="header__logo-icon" viewBox="0 0 32 32" -->
+                    <!-- <use href="./icon/symbol-defs.svg#icon-logo"></use> -->
+                <!-- </svg> -->
+                <span class="header__logo-span">Bookshelf</span>
             </div>
-            <label class=header__switch>
-                <input class=header__switch-input type=checkbox>
-                <span class="header__round header__slider"></span>
+            <label class="header__switch">
+                <input class="header__switch-input" type="checkbox">
+                <span class="header__slider header__round"></span>
             </label>
-            <button type=button class=header__menu-button>
+            <button type="button" class="header__menu-button">
+                <!-- <svg class="header__menu-icon">
+                    <use href="./icon/symbol-defs.svg#icon-menu"></use>
+                </svg> -->g
+            </button>
+            <button type="button" class="phone__close-button">
+                <!-- <svg class="phone__close-icon">
+                    <use href="./icon/symbol-defs.svg#icon-close"></use>
+                </svg> -->
                 g
             </button>
-            <button type=button class=phone__close-button>
-                
-                g
-            </button>
-            <button class=header__open-button type=button>
+            <button class="header__open-button" type="button">
                 Sign up
-                
+                <!-- <svg class="header__arrow-icon">
+                    <use href="./icon/symbol-defs.svg#icon-arrow-to-right"></use>                
+                    </svg> -->
             </button>
     </div></header>
 
-    
+    <!-- main -->
 
-    <main class=main>
-        <div class=container>
-            <section class=info>
-                <div class=category>
-                    <ul class=category__list>
-                        <li class=category__item>
-                            <span class="active category__span">All categories</span>
+    <main class="main">
+        <div class="container">
+            <section class="info">
+                <div class="category">
+                    <ul class="category__list">
+                        <li class="category__item">
+                            <span class="category__span active">All categories</span>
                         </li>
                     </ul>
                 </div>
-                <div class=support>
-                    <h2 class=support__title>Support Ukraine</h2>
-                    
-                    <ul class=support__list>
-                        <li class=support__item>
-                            <span class=support__span>01</span>
-                            <a class=support__link href=https://www.savethechildren.net/what-we-do/emergencies/war-ukraine>
-                                <img class=support__img src=/book-shop/SaveTheChildren.c9dd939b.png alt="Save the Children">
+                <div class="support">
+                    <h2 class="support__title">Support Ukraine</h2>
+                    <!-- <svg class="support__emblem-icon" viewBox="0 0 20 32">
+                        <use href="./icon/symbol-defs.svg#icon-emblem"></use>
+                        <path d="M9.006 30.888c-1.738-1.262-2.991-3.156-3.414-5.351h-5.591v-23.117c2.991 1.443 5.153 4.599 5.388 7.876l0.846 6.493-0.407-0.045c-0.893 0-1.676 0.812-1.676 1.608 0 0.752 0.595 1.383 1.378 1.548l1.018 0.226c1.676-3.051 2.631-6.042 2.631-8.973 0-2.645-0.36-5.291-0.423-7.996 0-1.202 0.486-2.3 1.253-3.156 0.783 0.857 1.253 1.954 1.253 3.156 0 2.705-0.423 5.351-0.423 7.996 0 2.931 0.955 5.922 2.631 8.973l1.018-0.226c0.783-0.165 1.378-0.812 1.378-1.548 0-0.812-0.783-1.608-1.676-1.608l-0.423 0.060 0.846-6.493c0.423-3.277 2.396-6.448 5.388-7.876v23.117h-5.576c-0.423 2.179-1.613 4.148-3.414 5.351-0.423 0.286-0.783 0.631-1.018 1.097-0.219-0.466-0.579-0.812-0.987-1.112zM2.647 17.556c0.235-0.857 0.893-1.608 1.738-2.074l-0.658-5.351c-0.235-1.668-0.955-3.156-2.036-4.374v11.784h0.955v0.015zM5.466 23.929c0-0.812 0.125-1.548 0.298-2.3l-0.783-0.18c-1.143-0.346-2.036-1.203-2.334-2.3h-0.955v4.78h3.774zM9.178 23.929c0-0.977-0.783-1.834-1.801-1.954-0.172 0.631-0.298 1.263-0.298 1.954h2.099zM9.178 25.552h-1.864c0.298 1.263 0.955 2.42 1.864 3.397v-3.397zM11.809 20.547c-0.72-1.262-1.378-2.585-1.801-3.968-0.423 1.383-1.081 2.706-1.801 3.968 0.72 0.165 1.316 0.631 1.801 1.157 0.486-0.526 1.081-0.992 1.801-1.157zM12.952 23.929c0-0.691-0.125-1.323-0.297-1.954-1.018 0.12-1.801 0.977-1.801 1.954h2.099zM12.717 25.552h-1.864v3.397c0.908-0.992 1.566-2.134 1.864-3.397zM18.34 23.929v-4.78h-0.955c-0.298 1.097-1.206 1.954-2.334 2.3l-0.783 0.18c0.172 0.752 0.298 1.488 0.298 2.3h3.774zM18.34 17.556v-11.799c-1.081 1.202-1.864 2.706-2.036 4.374l-0.658 5.351c0.846 0.466 1.504 1.203 1.739 2.074h0.955z"></path>
+                    </svg> -->
+                    <ul class="support__list">
+                        <li class="support__item">
+                            <span class="support__span">01</span>
+                            <a class="support__link" href="https://www.savethechildren.net/what-we-do/emergencies/war-ukraine">
+                                <img class="support__img" src="/SaveTheChildren.cd9876b8.png" alt="Save the Children">
                             </a>
                         </li>
-                        <li class=support__item>
-                            <span class=support__span>02</span>
-                            <a class=support__link href=https://www.projecthope.org/region/europe/ukraine/>
-                                <img class=support__img src=/book-shop/projectHOPE.c474f458.png alt="project HOPE">
+                        <li class="support__item">
+                            <span class="support__span">02</span>
+                            <a class="support__link" href="https://www.projecthope.org/region/europe/ukraine/">
+                                <img class="support__img" src="/projectHOPE.28b50dd4.png" alt="project HOPE">
                             </a>
                         </li>
-                        <li class=support__item>
-                            <span class=support__span>03</span>
-                            <a class=support__link href=https://internationalmedicalcorps.org/country/ukraine/>
-                                <img class=support__img src=/book-shop/InternationalMedicalCorps.52ce7d7c.png alt="International Medical Corps">
+                        <li class="support__item">
+                            <span class="support__span">03</span>
+                            <a class="support__link" href="https://internationalmedicalcorps.org/country/ukraine/">
+                                <img class="support__img" src="/InternationalMedicalCorps.c11c6d71.png" alt="International Medical Corps">
                             </a>
                         </li>
-                        <li class=support__item>
-                            <span class=support__span>04</span>
-                            <a class=support__link href=https://www.razomforukraine.org/ua/home_ua/>
-                                <img class=support__img src=/book-shop/Razom.ff0bc6f8.png alt=Razom>
+                        <li class="support__item">
+                            <span class="support__span">04</span>
+                            <a class="support__link" href="https://www.razomforukraine.org/ua/home_ua/">
+                                <img class="support__img" src="/Razom.53b6d5fc.png" alt="Razom">
                             </a>
                         </li>
-                        <li class=support__item>
-                            <span class=support__span>05</span>
-                            <a class=support__link href=https://www.actionagainsthunger.org/location/europe/ukraine/>
-                                <img class=support__img src=/book-shop/ActionAgaintsHunger.8e49f7f8.png alt="Action Againts Hunger">
+                        <li class="support__item">
+                            <span class="support__span">05</span>
+                            <a class="support__link" href="https://www.actionagainsthunger.org/location/europe/ukraine/">
+                                <img class="support__img" src="/ActionAgaintsHunger.f93bb9e8.png" alt="Action Againts Hunger">
                             </a>
                         </li>
-                        <li class=support__item>
-                            <span class=support__span>06</span>
-                            <a class=support__link href=https://prytulafoundation.org/en/>
-                                <img class=support__img src=/book-shop/CharityRoundationSergiyPrytula.3146fc49.png alt="Charity roundation Sergiy Prytula">
+                        <li class="support__item">
+                            <span class="support__span">06</span>
+                            <a class="support__link" href="https://prytulafoundation.org/en/">
+                                <img class="support__img" src="/CharityRoundationSergiyPrytula.ad70b865.png" alt="Charity roundation Sergiy Prytula">
                             </a>
                         </li>
-                        <li class="no-showe support__item">
-                            <span class=support__span>07</span>
-                            <a class=support__link href=https://www.msf.org/ukraine>
-                                <img class=support__img src=/book-shop/MedecinsSansFrontiernes.1e1a0427.png alt="Medecins Sans Frontiernes">
+                        <li class="support__item no-showe">
+                            <span class="support__span">07</span>
+                            <a class="support__link" href="https://www.msf.org/ukraine">
+                                <img class="support__img" src="/MedecinsSansFrontiernes.90d845f0.png" alt="Medecins Sans Frontiernes">
                             </a>
                         </li>
-                        <li class="no-showe support__item">
-                            <span class=support__span>08</span>
-                            <a class=support__link href=https://wv.ua/>
-                                <img class=support__img src=/book-shop/WorldVision.0dc00118.png alt="World Vision">
+                        <li class="support__item no-showe">
+                            <span class="support__span">08</span>
+                            <a class="support__link" href="https://wv.ua/">
+                                <img class="support__img" src="/WorldVision.b0c9ba87.png" alt="World Vision">
                             </a>
                         </li>
-                        <li class="no-showe support__item">
-                            <span class=support__span>09</span>
-                            <a class=support__link href=https://u24.gov.ua/uk>
-                                <img class=support__img src=/book-shop/United24.d2f1f9ee.png alt=United24>
+                        <li class="support__item no-showe">
+                            <span class="support__span">09</span>
+                            <a class="support__link" href="https://u24.gov.ua/uk">
+                                <img class="support__img" src="/United24.6a34c405.png" alt="United24">
                             </a>
                         </li>
                     </ul>
-                    <button class=support__scroll-button type=button>
-                        
+                    <button class="support__scroll-button" type="button">
+                        <!-- <svg class="support__scroll-icon" viewBox="0 0 32 32">
+                            <use href="./icon/symbol-defs.svg#icon-arrow-to-more-support"></use>
+                            <path d="M15.053 17.732c0.124 0.125 0.271 0.224 0.434 0.292s0.337 0.103 0.513 0.103 0.35-0.035 0.513-0.103c0.162-0.068 0.31-0.167 0.434-0.292l6.107-6.12c0.124-0.125 0.271-0.224 0.434-0.292s0.337-0.103 0.513-0.103c0.176 0 0.35 0.035 0.513 0.103s0.31 0.167 0.434 0.292c0.248 0.25 0.388 0.588 0.388 0.94s-0.139 0.69-0.388 0.94l-6.12 6.12c-0.75 0.749-1.767 1.17-2.827 1.17s-2.077-0.421-2.827-1.17l-6.12-6.12c-0.246-0.248-0.385-0.584-0.387-0.933-0.001-0.175 0.033-0.349 0.099-0.512s0.164-0.31 0.288-0.435c0.124-0.125 0.271-0.224 0.434-0.292s0.337-0.103 0.513-0.103c0.176 0 0.35 0.035 0.513 0.103s0.31 0.167 0.434 0.292l6.107 6.12z"></path>
+                        </svg> -->
                     </button>
                 </div>
             </section>
-            <section class=shop>
-                <h1 class=shop_title>
-                    Best Sellers <span class=shop_title-purpure>magazine</span>
+            <section class="shop">
+                <h1 class="shop_title">
+                    Best Sellers <span class="shop_title-purpure">magazine</span>
                 </h1>
-                <ul class=magazine>
+                <ul class="magazine">
                 </ul>
             </section>
         </div>
     </main>
 
-    
+    <!-- modals -->
 
-    <div class="is-hidden login-modal-bacdrop">
-        <div class=login-modal>
-            <button class=login-modal__close-button type=button>
-                
+    <div class="login-modal-bacdrop is-hidden">
+        <div class="login-modal">
+            <button class="login-modal__close-button" type="button">
+                <!-- <svg class="login-modal__close-icon">
+                    <use href="./icon/symbol-defs.svg#icon-close"></use>
+                </svg> -->
                 h
             </button>
-            <form class=login-modal__form>
-                <input class=login-modal__input id=name placeholder=nAME>
-                <input class=login-modal__input id=email type=email placeholder=eMAIL>
-                
-                <input class=login-modal__input id=password type=password placeholder=pASSWORD>
-                
-                <button class=login-modal__submit-button>Sign up</button>
+            <form class="login-modal__form" action="">
+                <input class="login-modal__input" id="name" type="text" placeholder="nAME">
+                <input class="login-modal__input" id="email" type="email" placeholder="eMAIL">
+                <!-- <svg class="login-modal__email-icon">
+                    <use href="./icon/symbol-defs.svg#icon-email"></use>
+                </svg> -->
+                <input class="login-modal__input" id="password" type="password" placeholder="pASSWORD">
+                <!-- <svg class="login-modal__password-icon">
+                    <use href="./icon/symbol-defs.svg#icon-lock"></use>
+                </svg> -->
+                <button class="login-modal__submit-button" type="submit">Sign up</button>
             </form>
-            <div class=login-modal__change-type>
-                <span class="active-modal login-modal__type-button" id="sing up">sign up</span>
-                <span class=login-modal__type-button id="sing in">sIGN In</span>
+            <div class="login-modal__change-type">
+                <span class="login-modal__type-button active-modal" id="sing up">sign up</span>
+                <span class="login-modal__type-button" id="sing in">sIGN In</span>
             </div>
         </div>
     </div>
-    <div class="is-hidden phone-bacdrop">
-        <button class=phone__open-button type=button>
+    <div class="phone-bacdrop is-hidden">
+        <button class="phone__open-button" type="button">
             Sign up
-            
+            <!-- <svg class="phone__arrow-icon">
+                <use href="./icon/symbol-defs.svg#icon-arrow-to-right"></use>
+            </svg> -->
         </button>
     </div>
-    <div class="is-hidden phoneLogin-bacdrop">
-        <div class=phoneLogin__account-div>
-            <div class=phoneLogin__account-avatar-div>
-                
+    <div class="phoneLogin-bacdrop is-hidden">
+        <div class="phoneLogin__account-div">
+            <div class="phoneLogin__account-avatar-div">
+                <!-- <svg class="phoneLogin__account-avatar">
+                    <use href="./icon/symbol-defs.svg#icon-user"></use>
+                </svg> -->
             </div>
-            <span class=phoneLogin__account-name></span>
+            <span class="phoneLogin__account-name"></span>
         </div>
-        <ul class=phoneLogin__nav-list>
-            <li class="active-nav-item phoneLogin__nav-item">
-                <a href=/book-shop/index.html class="active-nav-link phoneLogin__nav-link">Home</a>
+        <ul class="phoneLogin__nav-list">
+            <li class="phoneLogin__nav-item active-nav-item">
+                <a href="/index.html" class="phoneLogin__nav-link active-nav-link">Home</a>
             </li>
-            <li class=phoneLogin__nav-item>
-                <a class=phoneLogin__nav-link href=/book-shop/basket.html>Shopping list</a>
-                
+            <li class="phoneLogin__nav-item">
+                <a class="phoneLogin__nav-link" href="/basket.html">Shopping list</a>
+                <!-- <svg class="phoneLogin__nav-icon">
+                    <use href="./icon/symbol-defs.svg#icon-basket"></use>
+                </svg> -->
             </li>
         </ul>
-        <button class=phoneLogin__exit-button type=button>
+        <button class="phoneLogin__exit-button" type="button">
             Log out
-            
+            <!-- <svg class="phoneLogin__exit-icon">
+                <use href="./icon/symbol-defs.svg#icon-arrow-to-right"></use>
+            </svg> -->
         </button>
     </div>
     <div class="addModal-backdrop is-hidden">
-        <div class=addModal>
-            <button class=addModal__close-button type=button>
-                
+        <div class="addModal">
+            <button class="addModal__close-button" type="button">
+                <!-- <svg class="addModal__close-icon">
+                    <use href="./icon/symbol-defs.svg#icon-close"></use>
+                </svg> -->
                 h
             </button>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSopi8ObVN7rCP6PPGNQgLYhcGhB5cxKxFOcw&amp;s" alt="book photo" class=addModal__img>
-            <div class=addModal__info-div>
-                <h2 class=addModal__title></h2>
-                <h3 class=addModal__name></h3>
-                <p class=addModal__text></p>
-                
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSopi8ObVN7rCP6PPGNQgLYhcGhB5cxKxFOcw&amp;s" alt="book photo" class="addModal__img">
+            <div class="addModal__info-div">
+                <h2 class="addModal__title"></h2>
+                <h3 class="addModal__name"></h3>
+                <p class="addModal__text"></p>
+                <!-- <svg class="addModal__amazon-logo">
+                    <use href="./icon/symbol-defs.svg#icon-amazon"></use>
+                </svg>
+                <svg class="addModal__apple-books-logo">
+                    <use href="./icon/symbol-defs.svg#icon-apple-ibooks"></use>
+                </svg> -->
             </div>
-            <button class=addModal__button type=button>Add to shopping list</button>
+            <button class="addModal__button" type="button">Add to shopping list</button>
         </div>
     </div>
 
-    
+    <!-- dark theme -->
 
-    <style class=dark-style></style>
+    <style class="dark-style">
+</style>
 
-    
-    <script type=module src=/book-shop/book-shop.d9407bf3.js></script>
+    <!-- scrip -->
+    <script type="module" src="/book-shop.31b563d9.js"></script>
 
 
+</body></html>
