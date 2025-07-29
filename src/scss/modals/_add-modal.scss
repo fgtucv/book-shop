@@ -17,11 +17,14 @@
     border: 2px solid #111;
     background-color: #FFF;
     width: 579px;
-    height: 465px;
-    padding-top: 40px;
-    padding-left: 40px;
+    padding: 40px;
     display: flex;
     flex-wrap: wrap;
+
+    @media screen and (max-width: 767px) {
+        width: 335px;
+        padding: 40 24 40 24;
+    }
 }
 
 .addModal__close-button {
@@ -31,7 +34,11 @@
     position: absolute;
     top: 24px;
     right: 24px;
-    transform: translate(25%, 0%);
+
+    @media screen and (max-width: 767px) {
+        top: 12px;
+        right: 12px;
+    }
 }
 
 .addModal__close-icon {
@@ -44,7 +51,14 @@
     width: 192px;
     height: 281px;
     border-radius: 8px;
-    margin-right: 28px;
+    margin-right: 24px;
+
+    @media screen and (max-width: 767px) {
+        width: 287px;
+        height: 408px;
+        margin-right: 0;
+        margin-bottom: 14px;
+    }
 }
 
 .addModal__info-div {
@@ -58,6 +72,13 @@
     line-height: 28px;
     letter-spacing: -0.96px;
     margin-bottom: 8px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: -0.64px;
+        margin-bottom: 4px;
+    }
 }
 
 .addModal__name {
@@ -68,6 +89,13 @@
     line-height: 18px;
     letter-spacing: -0.56px;
     margin-bottom: 20px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: -0.48px;
+        margin-bottom: 18px;
+    }
 }
 
 .addModal__text {
@@ -77,12 +105,21 @@
     line-height: 18px;
     letter-spacing: -0.56px;
     margin-bottom: 20px;
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 14px;
+    }
 }
 
 .addModal__amazon-logo {
     width: 62px;
-height: 19px;
-margin-right: 20px;
+    height: 19px;
+    margin-right: 20px;
+
+    @media screen and (max-width: 767px) {
+        width: 62px;
+        height: 19px;
+    }
 }
 
 .addModal__apple-books-logo {
@@ -105,4 +142,20 @@ margin-right: 20px;
     justify-content: center;
     align-items: center;
     background: none;
+    margin-top: 40px;
+
+    @media screen and (max-width: 767px) {
+        display: inline-flex;
+        padding: 14px 28px;
+        align-items: flex-start;
+        gap: 10px;
+        width: 211px;
+        height: 46px;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: -0.14px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 58px;
+    }
 }
