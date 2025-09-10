@@ -24,7 +24,7 @@ closeButton.addEventListener("click", closeModal);
 submitButton.addEventListener("click", submitInfo);
 modalTypeButtons.addEventListener("click", changeModalType)
 
-let modalType = "sing up";
+let modalType = "singup";
 
 function openModal() {
     bacdrop.classList.remove("is-hidden");
@@ -52,7 +52,7 @@ export function submitInfo(event) {
 
     event.preventDefault();
 
-    if (modalType === "sing up") {
+    if (modalType === "singup") {
         const newAcount = {
             name: `${nameInput.value}`,
             email: `${emailInput.value}`,
@@ -68,7 +68,7 @@ export function submitInfo(event) {
         closeModal();
 
         return;
-    } else if (modalType === "sing in") {
+    } else if (modalType === "singin") {
         getAccount(nameInput.value, emailInput.value).then((data) => {
             const account = data[0];
 

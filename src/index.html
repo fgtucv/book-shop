@@ -11,6 +11,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
         rel="stylesheet">
     <link href="./scss/index.scss" rel="stylesheet">
+
+    <!-- dark theme -->
+    <style class="dark-style"></style>
 </head>
 
 <body>
@@ -50,6 +53,7 @@
                     <use href="./icon/symbol-defs.svg#icon-arrow-to-right"></use>                
                     </svg> -->
             </button>
+        </div>
     </header>
 
     <!-- main -->
@@ -66,9 +70,9 @@
                 </div>
                 <div class="support">
                     <h2 class="support__title">Support Ukraine</h2>
-                    <!-- <svg class="support__emblem-icon">
+                    <svg class="support__emblem-icon">
                         <use href="./icon/symbol-defs.svg#icon-emblem"></use>
-                    </svg> -->
+                    </svg>
                     <ul class="support__list">
                         <li class="support__item">
                             <span class="support__span">01</span>
@@ -159,7 +163,7 @@
                 </svg> -->
                 h
             </button>
-            <form class="login-modal__form" action>
+            <form class="login-modal__form">
                 <input class="login-modal__input" id="name" type="text" placeholder="nAME">
                 <input class="login-modal__input" id="email" type="email" placeholder="eMAIL">
                 <!-- <svg class="login-modal__email-icon">
@@ -172,8 +176,8 @@
                 <button class="login-modal__submit-button" type="submit">Sign up</button>
             </form>
             <div class="login-modal__change-type">
-                <span class="login-modal__type-button active-modal" id="sing up">sign up</span>
-                <span class="login-modal__type-button" id="sing in">sIGN In</span>
+                <span class="login-modal__type-button active-modal" id="singup">sign up</span>
+                <span class="login-modal__type-button" id="singin">sIGN In</span>
             </div>
         </div>
     </div>
@@ -236,11 +240,6 @@
             <button class="addModal__button" type="button">Add to shopping list</button>
         </div>
     </div>
-
-    <!-- dark theme -->
-
-    <style class="dark-style">
-    </style>
 
     <!-- scrip -->
     <script type="module" src="./index.js"></script>
