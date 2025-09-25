@@ -10,6 +10,11 @@
     z-index: 1000;
 }
 
+.active-phone-button {
+    fill: #000;
+    stroke: #000;
+}
+
 .header .container {
     display: flex;
     height: 72px;
@@ -284,4 +289,5 @@
     margin-left: 90px;
     width: 20px;
     height: 20px;
+    stroke: #eac645;
 }
