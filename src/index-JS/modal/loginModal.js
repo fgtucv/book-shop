@@ -26,7 +26,7 @@ modalTypeButtons.addEventListener("click", changeModalType)
 
 let modalType = "singup";
 
-function openModal() {
+export function openModal() {
     bacdrop.classList.remove("is-hidden");
 }
 
